@@ -1,3 +1,2 @@
--- DROP DATABASE IF EXISTS artGallery_db;
-
--- CREATE DATABASE artGallery_db;
+DROP DATABASE IF EXISTS artgalleries_db;
+CREATE DATABASE artgalleries_db;

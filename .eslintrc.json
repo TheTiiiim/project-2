@@ -1,16 +1,14 @@
 {
+  // Prevent ESLint from looking at parent directories
   "root": true,
   "env": {
     "browser": true,
     "commonjs": true,
     "node": true,
-    "es6": true,
-    // Add support for ES7 features like ** operators
-    "es2017": true
+    // Add support for ES6 features
+    "es6": true
   },
   "rules": {
-    // Don't allow assigning variables to undefined
-    "no-undef-init": "error",
     "no-duplicate-case": "error",
     "no-empty": "error",
     "no-extra-semi": "error",
@@ -30,9 +28,18 @@
     "no-use-before-define": "error",
     "no-redeclare": "error",
     "brace-style": "error",
-    "indent": ["error", 2],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
     "radix": "off"
   }
 }
