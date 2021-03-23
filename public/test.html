@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="A tech blog for practice purposes">
+
+    <!-- Reset CSS -->
+    <link href="./css/reset.css" rel="stylesheet">
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/lightBlueStyle.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <!-- <link rel="icon" href="./assets/images/Signature.png"> -->
+
+    <title>Tech Blog</title>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <!-- Burger Menu -->
+            <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <!-- Navigation Links Left Side -->
+            <div class="navbar-start">
+                <!-- Home Link -->
+                <a href="/homepage" class="navbar-item navLink">Home</a>
+                <!-- Dashboard Link -->
+                <a href="/dashboard" class="navbar-item navLink">Dashboard</a>
+                <!-- Login/logout Link -->
+                <a href="/login" class="navbar-item navLink">Log in/out</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="centered">
+
+        <!-- {{{body}}} -->
+
+        <!-- Home -->
+        <header class="sectionTitle">
+            <h1>All posts</h1>
+        </header>
+        <!-- {{#each blogPosts}} -->
+        <div class="container">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <!-- {{blogPost.title}} -->
+                        This is the blog post title
+                    </p>
+                </header>
+            </div>
+            <div class="card-content">
+                <p class="content">
+                    <!-- {{blogPost.content}} -->
+                    This is the content of the blog post
+                </p>
+            </div>
+        </div>
+        <!-- {{/each}} -->
+        <!-- End of Home -->
+
+        <!-- Dashboard -->
+        <header class="sectionTitle">
+            <h1>Create a Post</h1>
+        </header>
+        <div class="container">
+            <form class="column">
+                <!-- Name Input -->
+                <label class="boldLabel" for="postTitle">Post Title</label>
+                <input class="textInput" type="text" id="postTitle" name="postTitle" placeholder="Your post's title">
+            </form>
+            <form class="column">
+                <!-- Content Input -->
+                <label class="boldLabel" for="postBody">Post Body</label>
+                <textarea class="textInput" id="postBody" name="postBody" rows="4" placeholder="Write something..."></textarea>
+            </form>
+            <input class="buttonBlue" type="button" id="postSubmit" value="    Post!    ">
+        </div>
+        <!-- End of Dashboard -->
+
+        <!-- Login Page -->
+        <div class="wrapper" id="loginScreen">
+            <header class="sectionTitle">
+                <h1>Login</h1>
+            </header>
+            <div class="container">
+                <form class="column">
+                    <!-- Email Input -->
+                    <label class="boldLabel" for="loginEmail">Email</label>
+                    <input class="textInput" type="text" id="loginEmail" name="loginEmail" placeholder="Login Email">
+                </form>
+                <form class="column">
+                    <!-- Password Input -->
+                    <label class="boldLabel" for="loginPassword">Password</label>
+                    <input class="textInput" type="password" id="loginPassword" name="loginPassword" placeholder="Login Password">
+                </form>
+                <input class="buttonBlue" type="button" id="loginSubmit" value="    Log In    ">
+                <hr class="smallHR">
+                <a id="signupLink">Need to register an account? Sign up here!</a>
+            </div>
+        </div>
+        <div class="wrapper" id="signupScreen">
+            <header class="sectionTitle">
+                <h1>Sign Up</h1>
+            </header>
+            <div class="container">
+                <form class="column">
+                    <!-- Email Input -->
+                    <label class="boldLabel" for="signupEmail">Email</label>
+                    <input class="textInput" type="text" id="signupEmail" name="signupEmail" placeholder="Sign Up Email">
+                </form>
+                <form class="column">
+                    <!-- Password Input -->
+                    <label class="boldLabel" for="signupPassword">Password</label>
+                    <input class="textInput" type="password" id="signupPassword" name="signupPassword" placeholder="Sign Up Password">
+                </form>
+                <form class="column">
+                    <!-- Confirm Password Input -->
+                    <label class="boldLabel" for="confirmSignupPassword">Confirm Password</label>
+                    <input class="textInput" type="password" id="confirmSignupPassword" name="confirmSignupPassword" placeholder="Confirm Password">
+                </form>
+                <input class="buttonBlue" type="button" id="signupSubmit" value="    Sign Up    ">
+                <hr class="smallHR">
+                <a id="loginLink">Already have an account? Log in here!</a>
+            </div>
+        </div>
+        <!-- End of Login Page -->
+
+        <!-- End of body -->
+
+    </main>
+
+    <!-- Logged out modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Successfully Logged Out!</p>
+                <button class="delete modalClose" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <p>You have been logged out.</p>>
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
