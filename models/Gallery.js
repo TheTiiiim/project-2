@@ -32,16 +32,16 @@ Gallery.init(
     },
   },
   {
-    // hooks: {
-    //   beforeCreate: async (newUserData) => {
-    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-    //     return newUserData;
-    //   },
-    //   beforeUpdate: async (updatedUserData) => {
-    //     updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-    //     return updatedUserData;
-    //   },
-    // },
+    hooks: {
+      beforeCreate: async (newGalleryData) => {
+        newGalleryData.name = await newGalleryData.name.toLowerCase();
+        return newGalleryData;
+      },
+      beforeUpdate: async (updatedGalleryData) => {
+        updatedUserData.name = await updatedGalleryData.name.toLowerCase();
+        return updatedGalleryData;
+      },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,

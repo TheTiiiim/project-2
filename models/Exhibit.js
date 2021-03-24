@@ -32,6 +32,18 @@ Exhibit.init(
     },
   },
   {
+    hooks: {
+      beforeCreate: async (newExhibitData) => {
+        newExhibitData.name = await newExhibitData.name.toLowerCase();
+        return newExhibitData;
+      },
+      beforeUpdate: async (updatedExhibitData) => {
+        updatedUserData.name = await updatedExhibitData.name.toLowerCase();
+        return updatedExhibitData;
+      },
+    },
+  },
+  {
     sequelize,
     timestamps: false,
     freezeTableName: true,
