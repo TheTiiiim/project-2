@@ -40,6 +40,9 @@
       "error",
       "always"
     ],
-    "radix": "off"
+    "radix": "off",
+    "parserOptions": {
+      "ecmaVersion": 2017
+    }
   }
 }
