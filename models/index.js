@@ -3,24 +3,29 @@ const Gallery = require('./Gallery');
 const Exhibit = require('./Exhibit');
 
 //
-User.belongsTo(Gallery, {
-  // Define the third table needed to store the foreign keys
-  through: {
-    model: Exhibit,
-    unique: false
-  },
+User.hasOne(Gallery, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+//   through: {
+//     model: Exhibit,
+//     unique: false
+//   },
   // Define an alias for when data is retrieved
-  as: 'pieces'
+//   as: 'pieces'
 });
 
 Gallery.belongsTo(User, {
-  // Define the third table needed to store the foreign keys
-  through: {
-    model: Exhibit,
-    unique: false
-  },
-  // Define an alias for when data is retrieved
-  as: 'studio'
+    foreignKey: 'gallery_id'
+//   through: {
+//     model: Exhibit,
+//     unique: false
+//   },
+//   // Define an alias for when data is retrieved
+//   as: 'studio'
 });
+
+User.hasMany(Exhibit, { foreignKey: 'user_id' });
+
+Exhibit.belongsTo(User, { foreignKey: 'user_id' });
 
 module.exports = { User, Gallery, Exhibit };
