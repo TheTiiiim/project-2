@@ -8,6 +8,9 @@
     // Add support for ES6 features
     "es6": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
   "rules": {
     "no-duplicate-case": "error",
     "no-empty": "error",
@@ -40,9 +43,6 @@
       "error",
       "always"
     ],
-    "radix": "off",
-    "parserOptions": {
-      "ecmaVersion": 2017
-    }
+    "radix": "off"
   }
 }
