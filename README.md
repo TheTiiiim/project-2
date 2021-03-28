@@ -17,8 +17,9 @@ To view demo click on this link: ([Heroku Demo Link](PUT LINK HERE))
 - First clone this repo ([GIT](https://github.com/TheTiiiim/project-2)).
 - Install Node.js on your Mac ([Download](https://nodejs.org/en/)).
 - Run `npm install` at the command line to install all required dependencies from package.json.
-- Load the .sql file locally.
-- Run `node server.js` to start the node application.
+- Use `./db/schema.sql` to create your database.
+- run `npm run seed` to fill the database with data.
+- Run `npm start` to start the node application.
 
 
 # Code Overview
