@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --quiet --",
-    "lint:fix": "npm run lint --fix --",
+    "lint": "npx eslint **/*.js",
+    "lint:fix": "npx eslint **/*.js --fix",
     "watch": "nodemon",
     "seed": "node seeds/seed.js"
   },
