@@ -1,13 +1,24 @@
-const withAuth = (req, res, next) => {
-  // If the user is not logged in, redirect the user to the login page
-  // This is directly from the `/gallery/:id` and `/painting/:id` routes
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
-    // If the user is logged in, execute the route function that will allow them to view the gallery
-    // We call next() if the user is authenticated
-    next();
-  }
+const { sign } = require('jsonwebtoken');
+require('dotenv').config();
+
+const createAccessToken = (user) => {
+  return sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
 };
 
-module.exports = withAuth;
+const revokeRefreshTokensForUser = async (user) => {
+  user.tokenVersion++;
+  await user.save({ fields: ['tokenVersion']});
+};
+
+const createRefreshToken = async (user) => {
+  await revokeRefreshTokensForUser(user);
+  return sign({ userId: user.id, tokenVersion: user.tokenVersion }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
+};
+
+const sendRefreshToken = (res, token) => {
+  res.cookie('jid', token, {
+    httpOnly: true,
+  });
+};
+
+module.exports = { createAccessToken, createRefreshToken, sendRefreshToken, revokeRefreshTokensForUser };
