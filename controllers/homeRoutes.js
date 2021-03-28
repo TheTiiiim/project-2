@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const { User } = require('../models');
-const { requireSession } = require('../middlewares/auth');
+const { requireCookie } = require('../middlewares/auth');
 
 router.get('/', async (req, res) => {
   const dbUserData = await User.findAll();
@@ -13,9 +13,9 @@ router.get('/', async (req, res) => {
   res.render('home', { users });
 });
 
-router.get('/dashboard', requireSession, async (req, res) => {
+router.get('/dashboard', requireCookie, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.sessionPayload.userId);
+    const userData = await User.findByPk(req.cookiePayload.userId);
     if (!userData) {
       throw Error('no user');
     }

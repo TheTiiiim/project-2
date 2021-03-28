@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
+const { User } = require('../models');
 const { revokeRefreshTokensForUser } = require('../utils/auth');
-const { requireSession } = require('../middlewares/auth');
+const { requireCookie } = require('../middlewares/auth');
 
 // "/" endpoint
 
@@ -13,9 +14,15 @@ router.get('/register', (req, res) => {
   res.render('register');
 });
 
-router.get('/logout', requireSession, async (req, res) => {
+router.get('/logout', requireCookie, async (req, res) => {
   res.clearCookie('jid');
-  revokeRefreshTokensForUser(req.sessionPayload.userId);
+
+  const user = await User.findByPk(req.cookiePayload.userId);
+
+  if (user) {
+    revokeRefreshTokensForUser(user);
+  }
+
   res.render('logout');
 });
 

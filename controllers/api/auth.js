@@ -68,9 +68,20 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', requireAuth, async (req, res) => {
-  res.clearCookie('jid');
-  revokeRefreshTokensForUser(req.authPayload.userId);
-  res.sendStatus(200);
+  try {
+    res.clearCookie('jid');
+
+    const user = await User.findByPk(req.authPayload.userId);
+
+    if (!user) {
+      throw Error('no user');
+    }
+
+    revokeRefreshTokensForUser(user);
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(403);
+  }
 });
 
 router.post('/refresh_token', async (req, res) => {

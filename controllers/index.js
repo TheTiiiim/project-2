@@ -4,8 +4,8 @@ const homeRoutes = require('./homeRoutes');
 const authRoutes = require('./auth');
 const apiRoutes = require('./api');
 
-const { isSession } = require('../middlewares/auth');
-router.use(isSession);
+const { isCookie } = require('../middlewares/auth');
+router.use(isCookie);
 
 router.use('/', homeRoutes);
 router.use('/', authRoutes);

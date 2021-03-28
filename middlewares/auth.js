@@ -25,7 +25,7 @@ const requireAuth = (req, res, next) => {
   }
 };
 
-const isSession = (req, res, next) => {
+const isCookie = (req, res, next) => {
   // get token
   const token = req.cookies.jid;
 
@@ -37,19 +37,19 @@ const isSession = (req, res, next) => {
   try {
     // get payload
     payload = verify(token, process.env.REFRESH_TOKEN_SECRET);
-    req.sessionPayload = payload;
+    req.cookiePayload = payload;
     return next();
   } catch (err) {
     return next();
   }
 };
 
-const requireSession = (req, res, next) => {
-  if (req.sessionPayload) {
+const requireCookie = (req, res, next) => {
+  if (req.cookiePayload) {
     return next();
   } else {
     res.redirect('/login');
   }
 };
 
-module.exports = { isAuth, requireAuth, requireSession, isSession };
+module.exports = { isAuth, requireAuth, requireCookie, isCookie };
