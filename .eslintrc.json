@@ -5,7 +5,6 @@
     "browser": true,
     "commonjs": true,
     "node": true,
-    // Add support for ES6 features
     "es6": true
   },
   "rules": {
@@ -41,5 +40,8 @@
       "always"
     ],
     "radix": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
   }
 }
