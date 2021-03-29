@@ -1,11 +1,7 @@
 const router = require('express').Router();
-<<<<<<< HEAD
-// const { User } = require('../models');
-=======
 
 const { User } = require('../models');
 const { requireCookie } = require('../middlewares/auth');
->>>>>>> 84cede846ef0f83de9f6bc827f14a04ef0fe795b
 
 router.get('/', async (req, res) => {
   const dbUserData = await User.findAll();
@@ -26,8 +22,27 @@ router.get('/dashboard', requireCookie, async (req, res) => {
     const user = userData.get({ plain: true });
     delete user.password;
     res.render('dashboard', { user });
-  } catch {
+  } catch (err) {
     res.redirect('/login');
+  }
+});
+
+// Gallery Page
+router.get('/gallery/:id', async (req, res) => {
+  try {
+    // Get the specific gallery's data
+    const galleryData = await Post.findByPk(req.params.id, {
+      include: [
+        { model: User, attributes: ['name'] },
+        { model: Exhibit, include: [{ model: User, attributes: ['name'] }] },
+      ],
+    });
+    // Convert galleryData into a more readable format
+    const gallerys = galleryData.get({ plain: true });
+    // Render the page via Handlebars
+    res.render('gallery', { ...gallerys });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

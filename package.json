@@ -22,13 +22,8 @@
   },
   "homepage": "https://github.com/TheTiiiim/project-2#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "auth0": "^2.33.0",
-    "bcrypt": "^5.0.1",
-=======
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
->>>>>>> 84cede846ef0f83de9f6bc827f14a04ef0fe795b
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.1",
