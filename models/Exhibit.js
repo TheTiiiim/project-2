@@ -48,7 +48,8 @@ Exhibit.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exhibit',
+    paranoid: true,
+    modelName: 'exhibit'
   }
 );
 

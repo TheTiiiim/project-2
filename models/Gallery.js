@@ -46,7 +46,8 @@ Gallery.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'gallery',
+    paranoid: true,
+    modelName: 'gallery'
   }
 );
 
