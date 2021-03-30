@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { User } = require('../models');
+const { User, ShortStack, Artwork } = require('../models');
 const { requireCookie } = require('../middlewares/auth');
 
 router.get('/', async (req, res) => {
@@ -13,34 +13,24 @@ router.get('/', async (req, res) => {
   res.render('home', { users });
 });
 
-router.get('/dashboard', requireCookie, async (req, res) => {
+// Home Page (Where all of the users and their newest shortstack is displayed)
+router.get('/homepage', async (req, res) => {
   try {
-    const userData = await User.findByPk(req.cookiePayload.userId);
-    if (!userData) {
-      throw Error('no user');
-    }
-    const user = userData.get({ plain: true });
-    delete user.password;
-    res.render('dashboard', { user });
-  } catch (err) {
-    res.redirect('/login');
-  }
-});
-
-// Gallery Page
-router.get('/gallery/:id', async (req, res) => {
-  try {
-    // Get the specific gallery's data
-    const galleryData = await Post.findByPk(req.params.id, {
+    // Get all users with their newest shortstack.
+    const userData = await User.findAll({
+      order: [
+        // Order Gallery page by user's name descending
+        ['name', 'DESC']
+      ],
       include: [
-        { model: User, attributes: ['name'] },
-        { model: Exhibit, include: [{ model: User, attributes: ['name'] }] },
+        // Get the newest shortstack (which also includes the artworks associated with the shortstack) connected to the user
+        { model: ShortStack, include: [{ model: Artwork }], limit: 1, order: [ ['createdAt', 'DESC'] ] },
       ],
     });
-    // Convert galleryData into a more readable format
-    const gallerys = galleryData.get({ plain: true });
+    // Convert userData into a more readable format
+    const users = userData.get({ plain: true });
     // Render the page via Handlebars
-    res.render('gallery', { ...gallerys });
+    res.render('homepage', { ...users, });
   } catch (err) {
     res.status(500).json(err);
   }
