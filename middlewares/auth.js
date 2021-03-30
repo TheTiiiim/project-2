@@ -54,6 +54,9 @@ const isCookie = async (req, res, next) => {
 
     // attach to req
     req.cookieUserData = userData;
+
+    // pass user to handlebars
+    res.locals.userSignIn = userData.get({ plain: true });
     return next();
   } catch (err) {
     return next();

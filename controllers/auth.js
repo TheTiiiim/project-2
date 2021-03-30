@@ -15,10 +15,16 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/logout', requireCookie, async (req, res) => {
+  // remove token from cookie
   res.clearCookie('jid');
 
+  // invalidate all previous cookie tokens
   revokeRefreshTokensForUser(req.cookieUserData);
 
+  // dont pass cookie user to handlebars
+  delete res.locals.userSignIn;
+
+  // render
   res.render('logout');
 });
 
