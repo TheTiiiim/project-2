@@ -71,13 +71,7 @@ router.post('/logout', requireAuth, async (req, res) => {
   try {
     res.clearCookie('jid');
 
-    const user = await User.findByPk(req.authPayload.userId);
-
-    if (!user) {
-      throw Error('no user');
-    }
-
-    revokeRefreshTokensForUser(user);
+    revokeRefreshTokensForUser(req.authUserData);
     res.sendStatus(200);
   } catch (err) {
     res.sendStatus(403);
