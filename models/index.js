@@ -5,7 +5,7 @@ const Exhibit = require('./Exhibit');
 
 // Joins
 // =============================================================
-// A user can have many shortstacks but a shortstack can only have one user
+// A user can have many exhibits but an exhibit can only have one user
 User.hasMany(Exhibit, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
