@@ -3,14 +3,9 @@ const router = require('express').Router();
 const { User, ShortStack, Artwork } = require('../models');
 const { requireCookie } = require('../middlewares/auth');
 
-router.get('/', async (req, res) => {
-  const dbUserData = await User.findAll();
-
-  const users = dbUserData.map((user) =>
-    user.get({ plain: true }),
-  );
-
-  res.render('home', { users });
+// Landing Page (Where users choose to login/signup as artist or go to the homepage as a visitor)
+router.get('/', (req, res) => {
+  res.render('index');
 });
 
 // Home Page (Where all of the users and their newest shortstack is displayed)
@@ -24,16 +19,21 @@ router.get('/homepage', async (req, res) => {
       ],
       include: [
         // Get the newest shortstack (which also includes the artworks associated with the shortstack) connected to the user
-        { model: ShortStack, include: [{ model: Artwork }], limit: 1, order: [ ['createdAt', 'DESC'] ] },
+        { model: ShortStack, include: [{ model: Artwork }], limit: 1, order: [['createdAt', 'DESC']] },
       ],
     });
     // Convert userData into a more readable format
-    const users = userData.get({ plain: true });
+    const users = userData.map((user) => user.get({ plain: true }));
     // Render the page via Handlebars
-    res.render('homepage', { ...users, });
+    res.render('homepage', { users });
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// Upload Page (Where users submit their short stack) Requires user to be logged in
+router.get('/upload', requireCookie, (req, res) => {
+  res.render('upload');
 });
 
 module.exports = router;
