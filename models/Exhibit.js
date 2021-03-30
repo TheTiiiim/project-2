@@ -11,17 +11,21 @@ Exhibit.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    medium: {
       type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+    },
+    size: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -32,24 +36,12 @@ Exhibit.init(
     },
   },
   {
-    hooks: {
-      beforeCreate: async (newExhibitData) => {
-        newExhibitData.name = await newExhibitData.name.toLowerCase();
-        return newExhibitData;
-      },
-      beforeUpdate: async (updatedExhibitData) => {
-        updatedUserData.name = await updatedExhibitData.name.toLowerCase();
-        return updatedExhibitData;
-      },
-    },
-  },
-  {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    paranoid: true,
-    modelName: 'exhibit'
+    modelName: 'exhibit',
+    paranoid: true
   }
 );
 
