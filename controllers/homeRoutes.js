@@ -13,17 +13,35 @@ router.get('/', async (req, res) => {
   res.render('home', { users });
 });
 
-router.get('/dashboard', requireCookie, async (req, res) => {
+router.get('/dashboard', requireCookie, (req, res) => {
+  res.redirect(`/user/${req.cookiePayload.userId}`);
+});
+
+router.get('/user/:id', async (req, res) => {
   try {
-    const userData = await User.findByPk(req.cookiePayload.userId);
+    let privatePage = false;
+    if (req.cookiePayload) {
+      if (req.cookiePayload.userId === parseInt(req.params.id)) {
+        // true if signed in as user being viewed
+        privatePage = true;
+      }
+    }
+
+    const userData = await User.findByPk(req.params.id);
     if (!userData) {
       throw Error('no user');
     }
     const user = userData.get({ plain: true });
-    delete user.password;
-    res.render('dashboard', { user });
+
+    let modifiedUser = {
+      name: user.name,
+      email: user.email,
+      date_created: user.date_created
+    };
+
+    res.render('profile', { user: modifiedUser, privatePage });
   } catch {
-    res.redirect('/login');
+    res.send('user does not exist');
   }
 });
 
