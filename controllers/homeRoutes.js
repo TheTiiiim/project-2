@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { User, ShortStack, Artwork } = require('../models');
+const { User, Exhibit } = require('../models');
 const { requireCookie } = require('../middlewares/auth');
 
 // Landing Page (Where users choose to login/signup as artist or go to the homepage as a visitor)
@@ -11,21 +11,19 @@ router.get('/', (req, res) => {
 // Home Page (Where all of the users and their newest shortstack is displayed)
 router.get('/homepage', async (req, res) => {
   try {
-    // Get all users with their newest shortstack.
-    const userData = await User.findAll({
-      order: [
-        // Order Gallery page by user's name descending
-        ['name', 'DESC']
-      ],
+    // Get all exhibits with their artist's name.
+    const exhibitData = await Exhibit.findAll({
+      // Randomly sort the artwork
+      order: sequelize.random(),
       include: [
-        // Get the newest shortstack (which also includes the artworks associated with the shortstack) connected to the user
-        { model: ShortStack, include: [{ model: Artwork }], limit: 1, order: [['createdAt', 'DESC']] },
+        // Get the exhibit's artist.
+        { model: User, attributes: ['name'] },
       ],
     });
-    // Convert userData into a more readable format
-    const users = userData.map((user) => user.get({ plain: true }));
+    // Convert exhibitData into a more readable format
+    const exhibits = exhibitData.map((exhibit) => exhibit.get({ plain: true }));
     // Render the page via Handlebars
-    res.render('homepage', { users });
+    res.render('homepage', { exhibits });
   } catch (err) {
     res.status(500).json(err);
   }

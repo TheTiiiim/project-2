@@ -27,7 +27,7 @@ Exhibit.init(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    shortStack_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
