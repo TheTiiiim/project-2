@@ -1,10 +1,6 @@
-// Dependencies
-// =============================================================
 const router = require('express').Router();
 const { Exhibit } = require('../../models');
 
-// Get (Read)
-// =============================================================
 router.get('/:id', async (req, res) => {
   try {
     // Get the specific exhibit's data
@@ -17,8 +13,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Post (Create)
-// =============================================================
 router.post('/', async (req, res) => {
   try {
     // Create a new exhibit
@@ -29,8 +23,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Put (Update)
-// =============================================================
 router.put('/:id', async (req, res) => {
   try {
     const exhibitData = await Exhibit.update(req.body, {
@@ -48,8 +40,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete (Delete)
-// =============================================================
 router.delete('/:id', async (req, res) => {
   try {
     const exhibitData = await Exhibit.destroy({
@@ -67,6 +57,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-// Exports
-// =============================================================
 module.exports = router;
