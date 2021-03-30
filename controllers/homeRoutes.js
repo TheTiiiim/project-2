@@ -1,16 +1,32 @@
 const router = require('express').Router();
 
-const { User } = require('../models');
+const { User, Exhibit } = require('../models');
 const { requireCookie } = require('../middlewares/auth');
 
-router.get('/', async (req, res) => {
-  const dbUserData = await User.findAll();
+// Landing Page (Where users choose to login/signup as artist or go to the homepage as a visitor)
+router.get('/', (req, res) => {
+  res.render('index');
+});
 
-  const users = dbUserData.map((user) =>
-    user.get({ plain: true }),
-  );
-
-  res.render('home', { users });
+// Home Page (Where all of the users and their newest shortstack is displayed)
+router.get('/homepage', async (req, res) => {
+  try {
+    // Get all exhibits with their artist's name.
+    const exhibitData = await Exhibit.findAll({
+      // Randomly sort the artwork
+      order: sequelize.random(),
+      include: [
+        // Get the exhibit's artist.
+        { model: User, attributes: ['name'] },
+      ],
+    });
+    // Convert exhibitData into a more readable format
+    const exhibits = exhibitData.map((exhibit) => exhibit.get({ plain: true }));
+    // Render the page via Handlebars
+    res.render('homepage', { exhibits });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/dashboard', requireCookie, (req, res) => {
@@ -42,6 +58,21 @@ router.get('/user/:id', async (req, res) => {
     res.render('profile', { user: modifiedUser, privatePage });
   } catch {
     res.send('user does not exist');
+  }
+});
+
+// Upload Page (Where users submit their short stack) Requires user to be logged in
+router.get('/upload', requireCookie, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.cookiePayload.userId);
+    if (!userData) {
+      throw Error('no user');
+    }
+    const user = userData.get({ plain: true });
+    delete user.password;
+    res.render('upload', { user });
+  } catch (err) {
+    res.redirect('/login');
   }
 });
 
