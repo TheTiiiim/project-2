@@ -14,14 +14,14 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/dashboard', requireCookie, (req, res) => {
-  res.redirect(`/user/${req.cookiePayload.userId}`);
+  res.redirect(`/user/${req.cookieUserData.id}`);
 });
 
 router.get('/user/:id', async (req, res) => {
   try {
     let privatePage = false;
-    if (req.cookiePayload) {
-      if (req.cookiePayload.userId === parseInt(req.params.id)) {
+    if (req.cookieUserData) {
+      if (req.cookieUserData.id === parseInt(req.params.id)) {
         // true if signed in as user being viewed
         privatePage = true;
       }

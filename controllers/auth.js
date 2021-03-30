@@ -17,11 +17,7 @@ router.get('/register', (req, res) => {
 router.get('/logout', requireCookie, async (req, res) => {
   res.clearCookie('jid');
 
-  const user = await User.findByPk(req.cookiePayload.userId);
-
-  if (user) {
-    revokeRefreshTokensForUser(user);
-  }
+  revokeRefreshTokensForUser(req.cookieUserData);
 
   res.render('logout');
 });

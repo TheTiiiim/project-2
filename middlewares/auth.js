@@ -1,6 +1,7 @@
 const { verify } = require('jsonwebtoken');
+const { User } = require('../models');
 
-const isAuth = (req, res, next) => {
+const isAuth = async (req, res, next) => {
   const authorization = req.headers.authorization;
 
   if (!authorization) {
@@ -10,7 +11,15 @@ const isAuth = (req, res, next) => {
   try {
     const token = authorization.split(' ')[1];
     const payload = verify(token, process.env.ACCESS_TOKEN_SECRET);
-    req.authPayload = payload;
+
+    // get user
+    const userData = await User.findByPk(payload.userId);
+    if (!userData) {
+      throw Error('no user');
+    }
+
+    // attach to req
+    req.authUserData = userData;
     return next();
   } catch (err) {
     return next();
@@ -18,14 +27,14 @@ const isAuth = (req, res, next) => {
 };
 
 const requireAuth = (req, res, next) => {
-  if (req.authPayload) {
+  if (req.authUserData) {
     return next();
   } else {
     res.sendStatus(403);
   }
 };
 
-const isCookie = (req, res, next) => {
+const isCookie = async (req, res, next) => {
   // get token
   const token = req.cookies.jid;
 
@@ -33,11 +42,18 @@ const isCookie = (req, res, next) => {
     return next();
   }
 
-  let payload = null;
   try {
     // get payload
-    payload = verify(token, process.env.REFRESH_TOKEN_SECRET);
-    req.cookiePayload = payload;
+    const payload = verify(token, process.env.REFRESH_TOKEN_SECRET);
+
+    // get user
+    const userData = await User.findByPk(payload.userId);
+    if (!userData) {
+      throw Error('no user');
+    }
+
+    // attach to req
+    req.cookieUserData = userData;
     return next();
   } catch (err) {
     return next();
@@ -45,7 +61,7 @@ const isCookie = (req, res, next) => {
 };
 
 const requireCookie = (req, res, next) => {
-  if (req.cookiePayload) {
+  if (req.cookieUserData) {
     return next();
   } else {
     res.redirect('/login');
