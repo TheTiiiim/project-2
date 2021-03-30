@@ -29,6 +29,38 @@ router.get('/homepage', async (req, res) => {
   }
 });
 
+router.get('/dashboard', requireCookie, (req, res) => {
+  res.redirect(`/user/${req.cookieUserData.id}`);
+});
+
+router.get('/user/:id', async (req, res) => {
+  try {
+    let privatePage = false;
+    if (req.cookieUserData) {
+      if (req.cookieUserData.id === parseInt(req.params.id)) {
+        // true if signed in as user being viewed
+        privatePage = true;
+      }
+    }
+
+    const userData = await User.findByPk(req.params.id);
+    if (!userData) {
+      throw Error('no user');
+    }
+    const user = userData.get({ plain: true });
+
+    let modifiedUser = {
+      name: user.name,
+      email: user.email,
+      date_created: user.date_created
+    };
+
+    res.render('profile', { user: modifiedUser, privatePage });
+  } catch {
+    res.send('user does not exist');
+  }
+});
+
 // Upload Page (Where users submit their short stack) Requires user to be logged in
 router.get('/upload', requireCookie, async (req, res) => {
   try {

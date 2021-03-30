@@ -1,12 +1,12 @@
-# Web Wall
+# Art Stack
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) 
 
-Web Wall provides an online gallery of artwork by community artists. It offers the opportunity for local artists to show their work despite pandemic-related closures, and offers the public the chance to see the extraordinary works of art being produced in our community with their safety and convenience in mind. 
+Art Stack provides an online gallery of artwork by community artists. It offers the opportunity for local artists to show their work despite pandemic-related closures, and offers the public the chance to see the extraordinary works of art being produced in our community with their safety and convenience in mind. 
 
 ## Project Overview
 
 This app allows the user to browse through the art gallery, learn more about the local artists and to purchase their works of art. 
-Web Wall is an example of an app that uses MYSQL with the Node.js run-time environment and Express.js framework with Sequelize ORM, organized via the MVC model.  
+Art Stack is an example of an app that uses MYSQL with the Node.js run-time environment and Express.js framework with Sequelize ORM, organized via the MVC model.  
 
 # View Demo  
 

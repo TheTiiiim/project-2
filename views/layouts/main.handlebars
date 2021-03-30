@@ -19,14 +19,23 @@
   </head>
 
   <body>
-    {{!-- Header --}}
+    <header>
+      <p>Art Stack</p>
+      {{#if userSignIn}}
+        <p>signed in as {{userSignIn.name}}</p>
+      {{else}}
+        <p>not signed in</p>
+      {{/if}}
+    </header>
 
     <nav>
       <a href="/">home</a>
-      <a href="/dashboard">dashboard</a>
-      <a href="/register">register</a>
-      <a href="/login">login</a>
-      <a href="/logout">logout</a>
+      {{#if userSignIn}}
+        <a href="/logout">logout</a>
+      {{else}}
+        <a href="/register">register</a>
+        <a href="/login">login</a>
+      {{/if}}
     </nav>
 
     {{{body}}}
