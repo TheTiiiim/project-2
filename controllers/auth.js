@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-const { User } = require('../models');
 const { revokeRefreshTokensForUser } = require('../utils/auth');
 const { requireCookie } = require('../middlewares/auth');
 
