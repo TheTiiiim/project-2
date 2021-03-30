@@ -41,8 +41,5 @@
       "always"
     ],
     "radix": "off"
-  },
-  "parserOptions": {
-    "ecmaVersion": 2017
   }
 }
