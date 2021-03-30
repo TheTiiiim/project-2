@@ -2,11 +2,11 @@
   // Prevent ESLint from looking at parent directories
   "root": true,
   "env": {
-    "browser": true,
-    "commonjs": true,
     "node": true,
-    // Add support for ES6 features
-    "es6": true
+    "es2021": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 12
   },
   "rules": {
     "no-duplicate-case": "error",
@@ -40,6 +40,9 @@
       "error",
       "always"
     ],
-    "radix": "off"
+    "eol-last": [
+      "error",
+      "always"
+    ]
   }
 }
