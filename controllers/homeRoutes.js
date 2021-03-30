@@ -30,8 +30,18 @@ router.get('/homepage', async (req, res) => {
 });
 
 // Upload Page (Where users submit their short stack) Requires user to be logged in
-router.get('/upload', requireCookie, (req, res) => {
-  res.render('upload');
+router.get('/upload', requireCookie, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.cookiePayload.userId);
+    if (!userData) {
+      throw Error('no user');
+    }
+    const user = userData.get({ plain: true });
+    delete user.password;
+    res.render('upload', { user });
+  } catch (err) {
+    res.redirect('/login');
+  }
 });
 
 module.exports = router;
