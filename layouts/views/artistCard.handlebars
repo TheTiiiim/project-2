@@ -7,13 +7,38 @@
                 <div class="card-body">
                     <h5 class="card-title">Posted by {{this.artist}}</h5>
 
-                    {{#if this.description}}
+                    {{#if this.title}}
                     <ul class="list-group">
-                        {{#each this.description}}
+                        {{#each this.title}}
                         <li class="list-group-item">{{this}}</li>
                         {{/each}}
                     </ul>
                     {{/if}}
+
+                    {{#if this.medium}}
+                    <ul class="list-group">
+                        {{#each this.medium}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+
+                    {{#if this.size}}
+                    <ul class="list-group">
+                        {{#each this.size}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+
+                    {{#if this.price}}
+                    <ul class="list-group">
+                        {{#each this.price}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+
                 </div>
             </div>
         </div>
