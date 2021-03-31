@@ -32,4 +32,5 @@ $(() => {
 
   $('#registerForm').on('submit', getFormSubmitHandler('/api/register', '/'));
   $('#loginForm').on('submit', getFormSubmitHandler('/api/login', '/dashboard'));
+  $('#uploadForm').on('submit', getFormSubmitHandler('/api/exhibit', '/dashboard'));
 });
