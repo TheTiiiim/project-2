@@ -61,6 +61,7 @@ router.post('/login', async (req, res) => {
     // set accesss token
     res.status(200).json({ success: true, accessToken: createAccessToken(user) });
   } catch (err) {
+    console.log(err);
     let message = 'Username or password is incorrect.';
 
     res.status(403).json({ success: false, message });

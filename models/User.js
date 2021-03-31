@@ -28,14 +28,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    bio: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    website: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,

@@ -5,7 +5,7 @@ const { requireCookie } = require('../middlewares/auth');
 
 // Landing Page (Where users choose to login/signup as artist or go to the homepage as a visitor)
 router.get('/', (req, res) => {
-  res.render('index');
+  res.render('home');
 });
 
 // Home Page (Where all of the users and their newest shortstack is displayed)
@@ -23,7 +23,7 @@ router.get('/homepage', async (req, res) => {
     // Convert exhibitData into a more readable format
     const exhibits = exhibitData.map((exhibit) => exhibit.get({ plain: true }));
     // Render the page via Handlebars
-    res.render('homepage', { exhibits });
+    res.render('gallery', { exhibits });
   } catch (err) {
     res.status(500).json(err);
   }
