@@ -16,9 +16,16 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     // Create a new exhibit
-    const newExhibit = await Exhibit.create(req.body);
+    const newExhibit = await Exhibit.create({
+      'title': req.body.title,
+      'medium': req.body.medium,
+      'size': req.body.size,
+      'price': req.body.price,
+      'user_id': req.cookieUserData.id
+    });
     res.status(200).json(newExhibit);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
