@@ -1,0 +1,47 @@
+    <div class="row justify-content-center">
+        {{#each posts}}
+        <div class="col-lg-7" style="margin-top: 50px;">
+            <div class="card">
+
+                <img src="{{this.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Posted by {{this.artist}}</h5>
+
+                    {{#if this.title}}
+                    <ul class="list-group">
+                        {{#each this.title}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+
+                    {{#if this.medium}}
+                    <ul class="list-group">
+                        {{#each this.medium}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+
+                    {{#if this.size}}
+                    <ul class="list-group">
+                        {{#each this.size}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+
+                    {{#if this.price}}
+                    <ul class="list-group">
+                        {{#each this.price}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
