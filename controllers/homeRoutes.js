@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 // Home Page (Where all of the users and their newest shortstack is displayed)
-router.get('/homepage', async (req, res) => {
+router.get('/home', async (req, res) => {
   try {
     // Get all exhibits with their artist's name.
     const exhibitData = await Exhibit.findAll({
@@ -23,7 +23,7 @@ router.get('/homepage', async (req, res) => {
     // Convert exhibitData into a more readable format
     const exhibits = exhibitData.map((exhibit) => exhibit.get({ plain: true }));
     // Render the page via Handlebars
-    res.render('homepage', { exhibits });
+    res.render('home', { exhibits });
   } catch (err) {
     res.status(500).json(err);
   }
