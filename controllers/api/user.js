@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { requireAuth } = require('../../middlewares/auth');
+const { requireCookie } = require('../../middlewares/auth');
 
 // "/user" endpoint
 
-router.get('/', requireAuth, async (req, res) => {
+router.get('/', requireCookie, async (req, res) => {
   try {
-    const user = req.authUserData.get({ plain: true });
+    const user = req.userData.get({ plain: true });
     delete user.password;
     res.status(200).json({ ...user });
   } catch (err) {
