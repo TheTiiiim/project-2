@@ -1,0 +1,19 @@
+<header>
+  <img id="logo" src="images/webwall.png">
+  <h1 id="project2">Art Stack</h1>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gallery">Gallery</a></li>
+      {{#if loggedIn }}
+      <li><a href="/dashboard">Dashboard</a></li>
+      {{/if}}
+
+      {{#if loggedIn }}
+      <li><a href="/logout">Logout</a></li>
+      {{else}}
+      <li><a href="/login">Login</a></li>
+      {{/if}}
+
+    </ul>
+  </nav>

@@ -1,11 +1,14 @@
 <div class="bio">
     <div class="row justify-content-center">
+        {{#if privatePage}}
+            This is your page!
+        {{/if}}
         <div class="col-lg-7" style="margin-top: 50px;">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{this.artist}}</h5>
-                    <p class="bio"></p>
-                    {{this.artistBio}}
+                    <h5 class="card-title">{{user.name}}</h5>
+                    <p class="bio">Biography</p>
+                    {{user.userInfo.bio}}
                 </div>
             </div>
     </div>
