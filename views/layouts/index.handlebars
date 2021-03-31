@@ -16,15 +16,21 @@
     <!-- Favicon -->
     <link rel="icon" href="#">
 
-    <title>Something about this art gallery</title>
+    <title>Art Stack</title>
 </head>
-
 <body>
-    {{!-- Navbar --}}
 
-    {{!-- This is where the dynamic body goes --}}
-    {{{body}}}
+  <div class="flex-column justify-space-around">
+    <header class="display-flex justify-space-between align-center p-2">
+    </header>
+      <main class="container container-fluid mt-5">
+        {{> header}}
 
-</body>
+        {{{ body }}}
 
+        {{> footer}}
+      </main>
+  </div>
+  
+  </body>
 </html>
