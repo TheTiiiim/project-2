@@ -1,22 +1,21 @@
 <div class="container">
     {{!-- For each exhibit within the specific gallery, make a card --}}
-    {{#each shortStacks as |shortStack|}}
+    {{#each exhibits as |exhibit|}}
     <div class="container">
-        <div class="card">
-            <header class="card-header">
-                <p class="card-header-title">{{title}}</p>{{!-- Title of the artwork --}}
-                <p>By {{user.name}}</p>{{!-- Artist's name --}}
+        <p>By {{user.name}}</p>{{!-- Artist's name --}}
             </header>
         </div>
+    <div class="card">
+        <header class="card-header">
+            {{artwork}}
         <div class="card-content">
+        <p class="card-header-title">{{title}}</p>{{!-- Title of the artwork --}}
             <p class="content">
-                {{artwork}}{{!-- Image of the artwork --}}
             </p>
             <p>{{title}}</p> 
             <p>{{size}}</p> 
             <p>{{medium}}</p> 
             <p>{{price}}</p> 
-
         </div>
     </div>
     <hr>
