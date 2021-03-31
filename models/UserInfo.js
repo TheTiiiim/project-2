@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Exhibit extends Model {}
+class UserInfo extends Model { }
 
-Exhibit.init(
+UserInfo.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,21 +11,13 @@ Exhibit.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
-    medium: {
+    website: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    size: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -40,9 +32,9 @@ Exhibit.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exhibit',
+    modelName: 'userInfo',
     paranoid: true
   }
 );
 
-module.exports = Exhibit;
+module.exports = UserInfo;
