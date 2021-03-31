@@ -5,7 +5,9 @@ $(() => {
 
       // get data
       let form = $(e.target);
+      console.log(form);
       let formData = form.serializeArray();
+      console.log(formData);
 
       // format data for api
       const registerDetails = {};
