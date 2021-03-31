@@ -5,11 +5,11 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/gallery">Gallery</a></li>
-      {{#if loggedIn }}
+      {{#if userSignIn }}
         <li><a href="/dashboard">Dashboard</a></li>
       {{/if}}
 
-      {{#if loggedIn }}
+      {{#if userSignIn }}
         <li><a href="/logout">Logout</a></li>
       {{else}}
         <li><a href="/login">Login</a></li>
@@ -18,3 +18,4 @@
 
     </ul>
   </nav>
+</header>
