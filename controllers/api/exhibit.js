@@ -1,5 +1,7 @@
 const router = require('express').Router();
+
 const { Exhibit } = require('../../models');
+const { requireCookie } = require('../../middlewares/auth');
 
 router.get('/:id', async (req, res) => {
   try {
@@ -13,7 +15,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', requireCookie, async (req, res) => {
   try {
     // Create a new exhibit
     const newExhibit = await Exhibit.create(req.body);
@@ -23,7 +25,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', requireCookie, async (req, res) => {
   try {
     const exhibitData = await Exhibit.update(req.body, {
       where: {
@@ -40,7 +42,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', requireCookie, async (req, res) => {
   try {
     const exhibitData = await Exhibit.destroy({
       where: {

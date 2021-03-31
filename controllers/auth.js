@@ -18,7 +18,7 @@ router.get('/logout', requireCookie, async (req, res) => {
   res.clearCookie('jid');
 
   // invalidate all previous cookie tokens
-  revokeRefreshTokensForUser(req.cookieUserData);
+  revokeRefreshTokensForUser(req.userData);
 
   // dont pass cookie user to handlebars
   delete res.locals.userSignIn;

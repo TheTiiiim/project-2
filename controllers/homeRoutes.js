@@ -8,7 +8,7 @@ const { requireCookie } = require('../middlewares/auth');
 router.get('/', (req, res) => {
   // Check if user is logged in
   let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
+  req.userData ? loggedIn = true : loggedIn = false;
 
   res.render('home', { loggedIn });
 });
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.get('/gallery', async (req, res) => {
   // Check if user is logged in
   let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
+  req.userData ? loggedIn = true : loggedIn = false;
   try {
     // Get all exhibits with their artist's name.
     const exhibitData = await Exhibit.findAll({
@@ -38,17 +38,17 @@ router.get('/gallery', async (req, res) => {
 });
 
 router.get('/dashboard', requireCookie, (req, res) => {
-  res.redirect(`/user/${req.cookieUserData.id}`);
+  res.redirect(`/user/${req.userData.id}`);
 });
 
 router.get('/user/:id', async (req, res) => {
   // Check if user is logged in
   let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
+  req.userData ? loggedIn = true : loggedIn = false;
   try {
     let privatePage = false;
-    if (req.cookieUserData) {
-      if (req.cookieUserData.id === parseInt(req.params.id)) {
+    if (req.userData) {
+      if (req.userData.id === parseInt(req.params.id)) {
         // true if signed in as user being viewed
         privatePage = true;
       }
@@ -73,7 +73,7 @@ router.get('/user/:id', async (req, res) => {
 router.get('/submit', requireCookie, async (req, res) => {
   // Check if user is logged in
   let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
+  req.userData ? loggedIn = true : loggedIn = false;
   res.render('submit', { loggedIn });
 });
 
