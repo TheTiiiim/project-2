@@ -2,22 +2,22 @@
 
 <form id="uploadForm" class="row g-3">
   <div class="form-floating mb-3">
-    <input type="text" id="title" class="form-control" placeholder="placeholder" name="title">
+    <input type="text" required id="title" class="form-control" placeholder="placeholder" name="title">
     <label class="floatingInput" for="title">Title</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" id="medium" class="form-control" placeholder="placeholder" name="medium">
+    <input type="text" required id="medium" class="form-control" placeholder="placeholder" name="medium">
     <label class="floatingInput" for="medium">Medium</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" id="size" class="form-control" placeholder="placeholder" name="size">
+    <input type="text" required id="size" class="form-control" placeholder="placeholder" name="size">
     <label class="floatingInput" for="size">Size</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="number" id="price" class="form-control" placeholder="placeholder" name="price">
+    <input type="number" required min="0" step=".01" id="price" class="form-control" placeholder="placeholder" name="price">
     <label class="floatingInput" for="price">Price</label>
   </div>
 

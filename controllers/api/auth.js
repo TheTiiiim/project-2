@@ -70,7 +70,6 @@ router.post('/login', async (req, res) => {
 router.post('/logout', requireCookie, async (req, res) => {
   try {
     res.clearCookie('jid');
-
     revokeRefreshTokensForUser(req.userData);
     res.sendStatus(200);
   } catch (err) {
