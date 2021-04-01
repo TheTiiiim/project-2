@@ -14,7 +14,7 @@ To view demo click on this link: ([Heroku Demo Link](PUT LINK HERE))
 
 # Getting Started   
 
-- First clone this repo ([GIT](https://github.com/TheTiiiim/project-2)).
+- First clone this repo ([GIT](https://github.com/TheTiiiim/art-stack)).
 - Install Node.js on your Mac ([Download](https://nodejs.org/en/)).
 - Run `npm install` at the command line to install all required dependencies from package.json.
 - Use `./db/schema.sql` to create your database.
