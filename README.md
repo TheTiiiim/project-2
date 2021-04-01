@@ -1,8 +1,6 @@
 # Art Stack
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) 
 
-Check it out [here](https://art-stack-0.herokuapp.com/)!
-
 Art Stack provides an online gallery of artwork by community artists. It offers the opportunity for local artists to show their work despite pandemic-related closures, and offers the public the chance to see the extraordinary works of art being produced in our community with their safety and convenience in mind. 
 
 ## Project Overview
