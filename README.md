@@ -12,7 +12,7 @@ Art Stack is an example of an app that uses MYSQL with the Node.js run-time envi
 
 # View Demo  
 
-To view demo click on this link: ([Heroku Demo Link](PUT LINK HERE))
+To view demo click on this link: ([https://art-stack-0.herokuapp.com/](https://art-stack-0.herokuapp.com/))
 
 # Getting Started   
 
