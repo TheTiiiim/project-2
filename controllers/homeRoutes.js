@@ -14,14 +14,10 @@ router.get('/', (req, res) => {
 });
 
 // Home Page (Where all of the users and their newest shortstack is displayed)
-<<<<<<< HEAD
-router.get('/home', async (req, res) => {
-=======
 router.get('/gallery', async (req, res) => {
   // Check if user is logged in
   let loggedIn;
   req.cookieUserData ? loggedIn = true : loggedIn = false;
->>>>>>> f4788bb33f892b866855e37e37ad31b3999a22b2
   try {
     // Get all exhibits with their artist's name.
     const exhibitData = await Exhibit.findAll({
@@ -35,11 +31,7 @@ router.get('/gallery', async (req, res) => {
     // Convert exhibitData into a more readable format
     const exhibits = exhibitData.map((exhibit) => exhibit.get({ plain: true }));
     // Render the page via Handlebars
-<<<<<<< HEAD
-    res.render('home', { exhibits });
-=======
     res.render('gallery', { exhibits, loggedIn });
->>>>>>> f4788bb33f892b866855e37e37ad31b3999a22b2
   } catch (err) {
     res.status(500).json(err);
   }
