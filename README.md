@@ -1,5 +1,9 @@
+![Art Stack](https://github.com/TheTiiiim/art-stack/tree/BeeJayBranch/public/images/Artstackicon.png)
+
 # Art Stack
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) 
+
+Check it out [here](https://art-stack-0.herokuapp.com/)!
 
 Art Stack provides an online gallery of artwork by community artists. It offers the opportunity for local artists to show their work despite pandemic-related closures, and offers the public the chance to see the extraordinary works of art being produced in our community with their safety and convenience in mind. 
 
@@ -10,11 +14,11 @@ Art Stack is an example of an app that uses MYSQL with the Node.js run-time envi
 
 # View Demo  
 
-To view demo click on this link: ([Heroku Demo Link](PUT LINK HERE))
+To view demo click on this link: [https://art-stack-0.herokuapp.com/](https://art-stack-0.herokuapp.com/)
 
 # Getting Started   
 
-- First clone this repo ([GIT](https://github.com/TheTiiiim/project-2)).
+- First clone this repo ([GIT](https://github.com/TheTiiiim/art-stack)).
 - Install Node.js on your Mac ([Download](https://nodejs.org/en/)).
 - Run `npm install` at the command line to install all required dependencies from package.json.
 - Use `./db/schema.sql` to create your database.
@@ -48,4 +52,13 @@ To view demo click on this link: ([Heroku Demo Link](PUT LINK HERE))
 - `/db` - Starter database files.
 - `/controllers` - Most of the application's logic for requests and responses are done in this directory. 
 - `/config` - Database configuration. 
+
+## Contributors
+- [TheTiiiim](https://github.com/TheTiiiim)
+- [bjenkins63](https://github.com/bjenkins63)
+- [MRomano84](https://github.com/MRomano84)
+- [Ejhuang2015](https://github.com/Ejhuang2015)
+- [wmgleason](https://github.com/wmgleason)
+
+
 
