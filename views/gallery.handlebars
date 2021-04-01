@@ -1,22 +1,20 @@
-<div class="container">
-
-    p>By {{user.name}}</p>{{!-- Artist's name --}}
-
+{{!-- For each exhibit within the specific gallery, make a card --}}
+<div class="container row">
     {{#each exhibits as |exhibit|}}
-    
-    <div class="card">
-        <header class="card-header">
-            {{artwork}}
-        <div class="card-content">
-        <p class="card-header-title">{{title}}</p>{{!-- Title of the artwork --}}
-            <p class="content">
-            </p>
-            <p>{{title}}</p> 
-            <p>{{size}}</p> 
-            <p>{{medium}}</p> 
-            <p>{{price}}</p> 
+    <div class="card text-center" style="width: 18rem;">
+        {{!-- Card Image --}}
+        <img src="{{image_url}}" class="card-img-top" alt="...">
+        {{!-- Card Body --}}
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p>By {{user.name}}</p>
+            <p>{{size}} · {{medium}}</p>
+            <p>${{price}}</p>
         </div>
+        {{!-- Card Button --}}
+        <a href="/user/{{user.id}}" class="btn btn-primary">Visit Artist's Page</a>
     </div>
-    <hr>
     {{/each}}
 </div>
+
+{{!-- Notes: Add some padding between cards, give styling to text --}}

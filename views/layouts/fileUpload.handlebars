@@ -6,28 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Description" content="Some description about the art gallery">
 
-    <!-- Reset CSS -->
-    <link href="/css/reset.css" rel="stylesheet">
+  <!-- Reset CSS -->
+  <link href="/css/reset.css" rel="stylesheet">
+  <!-- Style CSS -->
+  <link href="/css/style.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 
-    <!-- Favicon -->
-    <link rel="icon" href="#">
+  <title>Art Stack</title>
+</head>
 
-    <title>Art Stack</title>
-  </head>
+<body class="d-flex flex-column min-vh-100">
+  {{> header}}
 
-  <body>
-    {{> header}}
-
+  <div class="flex-column justify-space-around">
     <main class="container container-fluid mt-5">
       {{{ body }}}
     </main>
+  </div>
 
-    {{> footer}}
-  </body>
+  {{> footer}}
+</body>
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>

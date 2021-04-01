@@ -1,38 +1,36 @@
-<div class="container">
-  <h1>Upload</h1>
+<h1>Upload</h1>
 
-  <form id="uploadForm">
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="title">Title</label><br>
-      <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="title" required>
-    </div>
+<form id="uploadForm" class="row g-3">
+  <div class="form-floating mb-3">
+    <input type="text" required id="title" class="form-control" placeholder="placeholder" name="title">
+    <label class="floatingInput" for="title">Title</label>
+  </div>
 
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="medium">Medium</label><br>
-      <input type="text" id="medium" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="medium" required>
-    </div>
+  <div class="form-floating mb-3">
+    <input type="text" required id="medium" class="form-control" placeholder="placeholder" name="medium">
+    <label class="floatingInput" for="medium">Medium</label>
+  </div>
 
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="size">Size</label><br>
-      <input type="text" id="size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="size" required>
-    </div>
+  <div class="form-floating mb-3">
+    <input type="text" required id="size" class="form-control" placeholder="placeholder" name="size">
+    <label class="floatingInput" for="size">Size</label>
+  </div>
 
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="price">Price</label><br>
-      <input type="number" id="price" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="price" required>
-    </div>
+  <div class="form-floating mb-3">
+    <input type="number" required min="0" step=".01" id="price" class="form-control" placeholder="placeholder" name="price">
+    <label class="floatingInput" for="price">Price</label>
+  </div>
 
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="imageUrl">File Url</label><br>
-      <input type="text" id="imageUrl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="imageUrl" readonly required>
-    </div>
+  <div class="form-floating mb-3">
+    <input type="text" readonly required id="imageUrl" class="form-control" name="imageUrl" >
+    <label class="floatingInput" for="imageUrl">Image File</label><br>
+  </div>
 
-    <div class="col-12">
-      <button id="uploadButton" type="button" class="btn btn-primary">Upload File</button>
-    </div>
+  <div class="col-12">
+    <button id="uploadButton" type="button" class="btn btn-primary">Upload File</button>
+  </div>
 
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </form>
-</div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

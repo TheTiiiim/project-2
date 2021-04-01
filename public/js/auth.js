@@ -1,13 +1,11 @@
 $(() => {
-  const getFormSubmitHandler = (endpoint, redirect) => {
+  const getFormSubmitHandler = (endpoint, redirect, method) => {
     return (e) => {
       e.preventDefault();
 
       // get data
       let form = $(e.target);
-      console.log(form);
       let formData = form.serializeArray();
-      console.log(formData);
 
       // format data for api
       const registerDetails = {};
@@ -15,7 +13,11 @@ $(() => {
         registerDetails[key] = value;
       });
 
-      $.post(endpoint, registerDetails)
+      $.ajax({
+        type: method,
+        url: endpoint,
+        data: registerDetails
+      })
         .done((data) => {
           if (data.success) {
             window.location.href = redirect;
@@ -29,8 +31,13 @@ $(() => {
         });
     };
   };
-
-  $('#registerForm').on('submit', getFormSubmitHandler('/api/register', '/'));
-  $('#loginForm').on('submit', getFormSubmitHandler('/api/login', '/dashboard'));
-  $('#uploadForm').on('submit', getFormSubmitHandler('/api/exhibit', '/dashboard'));
+  // Grab the id of the model for PUT/DELETE methods
+  const id = $('#formSubmit').attr('data-value');
+  // POST methods
+  $('#registerForm').on('submit', getFormSubmitHandler('/api/register', '/', 'POST'));
+  $('#loginForm').on('submit', getFormSubmitHandler('/api/login', '/dashboard', 'POST'));
+  $('#uploadForm').on('submit', getFormSubmitHandler('/api/exhibit', '/dashboard', 'POST'));
+  // PUT methods
+  $('#editUser').on('submit', getFormSubmitHandler(`/api/user/${id}`, '/dashboard', 'PUT'));
+  $('#editExhibit').on('submit', getFormSubmitHandler(`/api/exhibit/${id}`, '/dashboard', 'PUT'));
 });
