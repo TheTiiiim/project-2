@@ -1,47 +1,36 @@
-    <div class="row justify-content-center">
-        {{#each posts}}
-        <div class="col-lg-7" style="margin-top: 50px;">
-            <div class="card">
+<h1>Upload</h1>
 
-                <img src="{{this.image}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Posted by {{this.artist}}</h5>
+<form id="uploadForm" class="row g-3">
+  <div class="form-floating mb-3">
+    <input type="text" required id="title" class="form-control" placeholder="placeholder" name="title">
+    <label class="floatingInput" for="title">Title</label>
+  </div>
 
-                    {{#if this.title}}
-                    <ul class="list-group">
-                        {{#each this.title}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
+  <div class="form-floating mb-3">
+    <input type="text" required id="medium" class="form-control" placeholder="placeholder" name="medium">
+    <label class="floatingInput" for="medium">Medium</label>
+  </div>
 
-                    {{#if this.medium}}
-                    <ul class="list-group">
-                        {{#each this.medium}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
+  <div class="form-floating mb-3">
+    <input type="text" required id="size" class="form-control" placeholder="placeholder" name="size">
+    <label class="floatingInput" for="size">Size</label>
+  </div>
 
-                    {{#if this.size}}
-                    <ul class="list-group">
-                        {{#each this.size}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
+  <div class="form-floating mb-3">
+    <input type="number" required min="0" step=".01" id="price" class="form-control" placeholder="placeholder" name="price">
+    <label class="floatingInput" for="price">Price</label>
+  </div>
 
-                    {{#if this.price}}
-                    <ul class="list-group">
-                        {{#each this.price}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
+  <div class="form-floating mb-3">
+    <input type="text" readonly required id="imageUrl" class="form-control" name="imageUrl" >
+    <label class="floatingInput" for="imageUrl">Image File</label><br>
+  </div>
 
-                </div>
-            </div>
-        </div>
-        {{/each}}
-    </div>
-</div>
+  <div class="col-12">
+    <button id="uploadButton" type="button" class="btn btn-primary">Upload File</button>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

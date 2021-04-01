@@ -1,5 +1,7 @@
 const router = require('express').Router();
+
 const { Exhibit } = require('../../models');
+const { requireCookie } = require('../../middlewares/auth');
 
 router.get('/:id', async (req, res) => {
   try {
@@ -13,34 +15,45 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', requireCookie, async (req, res) => {
   try {
     // Create a new exhibit
-    const newExhibit = await Exhibit.create(req.body);
-    res.status(200).json(newExhibit);
+    await Exhibit.create({
+      'title': req.body.title,
+      'medium': req.body.medium,
+      'size': req.body.size,
+      'price': req.body.price,
+      'image_url': req.body.imageUrl,
+      'user_id': req.userData.id
+    });
+    res.status(200).json({success: true});
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(400).json({success: false, message: err.message});
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', requireCookie, async (req, res) => {
   try {
-    const exhibitData = await Exhibit.update(req.body, {
+    await Exhibit.update({
+      'title': req.body.title,
+      'medium': req.body.medium,
+      'size': req.body.size,
+      'price': req.body.price,
+      'image_url': req.body.imageUrl,
+    }, {
       where: {
         id: req.params.id,
       },
     });
-    if (!exhibitData) {
-      res.status(404).json({ message: 'Exhibit not found!' });
-      return;
-    }
-    res.status(200).json(exhibitData ? 'Exhibit updated!' : 'Failed to update exhibit');
+    res.status(200).json({success: true});
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.status(400).json({success: false, message: err.message});
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', requireCookie, async (req, res) => {
   try {
     const exhibitData = await Exhibit.destroy({
       where: {

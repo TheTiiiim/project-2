@@ -1,10 +1,6 @@
 const { sign } = require('jsonwebtoken');
 require('dotenv').config();
 
-const createAccessToken = (user) => {
-  return sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
-};
-
 const revokeRefreshTokensForUser = async (user) => {
   user.tokenVersion++;
   await user.save({ fields: ['tokenVersion']});
@@ -21,4 +17,4 @@ const sendRefreshToken = (res, token) => {
   });
 };
 
-module.exports = { createAccessToken, createRefreshToken, sendRefreshToken, revokeRefreshTokensForUser };
+module.exports = { createRefreshToken, sendRefreshToken, revokeRefreshTokensForUser };
