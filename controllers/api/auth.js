@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { compare } = require('bcryptjs');
-const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 const { User } = require('../../models');
@@ -27,7 +26,7 @@ router.post('/register', async (req, res) => {
 
     if (Array.isArray(err.errors)) {
       const error = err.errors[0];
-      if (error.includes('unique')) {
+      if (error.type.includes('unique')) {
         let columnWithDuplicate = error.path.split('.')[error.path.length - 1];
         message = `That ${columnWithDuplicate} is already used.`;
       }
