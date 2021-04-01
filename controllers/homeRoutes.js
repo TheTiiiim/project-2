@@ -59,7 +59,7 @@ router.get('/user/:id', async (req, res) => {
 
 // Upload Page (Where users submit their short stack) Requires user to be logged in
 router.get('/submit', requireCookie, async (req, res) => {
-  res.render('submit', {layout: 'auth.handlebars'});
+  res.render('submit', {layout: 'fileUpload.handlebars'});
 });
 
 module.exports = router;

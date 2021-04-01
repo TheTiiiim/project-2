@@ -4,26 +4,35 @@
   <form id="uploadForm">
     <div class="input-group mb-3">
       <label class="input-group-text" for="title">Title</label><br>
-      <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="title">
+      <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="title" required>
     </div>
 
     <div class="input-group mb-3">
       <label class="input-group-text" for="medium">Medium</label><br>
-      <input type="text" id="medium" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="medium">
+      <input type="text" id="medium" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="medium" required>
     </div>
 
     <div class="input-group mb-3">
       <label class="input-group-text" for="size">Size</label><br>
-      <input type="text" id="size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="size">
+      <input type="text" id="size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="size" required>
     </div>
 
     <div class="input-group mb-3">
       <label class="input-group-text" for="price">Price</label><br>
-      <input type="number" id="price" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="price">
+      <input type="number" id="price" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="price" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="imageUrl">File Url</label><br>
+      <input type="text" id="imageUrl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="imageUrl" readonly required>
     </div>
 
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Upload</button>
+      <button id="uploadButton" type="button" class="btn btn-primary">Upload File</button>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 </div>
