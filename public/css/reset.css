@@ -41,3 +41,52 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/* for the login form */
+#form_wrapper {
+	width: 1000px;
+	height: 700px;
+	/* this will help center it*/
+	margin: auto;
+	border-radius: 50px;
+	/* make it a grid container*/
+	display: grid;
+	/* with two columns of same width*/
+	grid-template-columns: 1fr 1fr;
+	/* with a small gap in between them*/
+	grid-gap: 5vw;
+	/* add some padding around */
+	padding: 5vh 15px;
+  }
+
+  #form_left {
+	/* center the little image */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  #form_left img {
+	width: 120px;
+	height: 150px;
+  }
+
+  #loginform {
+	display: grid;
+	/* single column layout */
+	grid-template-columns: 1fr;
+	/* have some gap in between elements*/
+	grid-gap: 20px;
+	padding: 10% 5%;
+  }
+  ::-webkit-input-placeholder {
+	font-style: italic;
+ }
+ :-moz-placeholder {
+	font-style: italic;  
+ }
+ ::-moz-placeholder {
+	font-style: italic;  
+ }
+ :-ms-input-placeholder {  
+	font-style: italic; 
+ }
