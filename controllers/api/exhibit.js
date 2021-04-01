@@ -23,6 +23,7 @@ router.post('/', requireCookie, async (req, res) => {
       'medium': req.body.medium,
       'size': req.body.size,
       'price': req.body.price,
+      'image_url': req.body.imageUrl,
       'user_id': req.userData.id
     });
     res.status(200).json({success: true});

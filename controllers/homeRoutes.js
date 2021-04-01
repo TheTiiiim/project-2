@@ -66,7 +66,7 @@ router.get('/editUser/:id', async (req, res) => {
           throw Error('no user');
         }
         const user = userData.get({ plain: true });
-        res.render('userInfo', { user, layout: 'auth.handlebars' });
+        res.render('userInfo', { user, layout: 'fileUpload.handlebars' });
       }
     } else {
       res.render('error');
@@ -78,7 +78,7 @@ router.get('/editUser/:id', async (req, res) => {
 
 // Upload Page (Where users submit their short stack) Requires user to be logged in
 router.get('/submit', requireCookie, async (req, res) => {
-  res.render('submit', { layout: 'auth.handlebars' });
+  res.render('submit', {layout: 'fileUpload.handlebars'});
 });
 
 router.get('/editExhibit/:id', async (req, res) => {
@@ -94,7 +94,7 @@ router.get('/editExhibit/:id', async (req, res) => {
       // Check if exhibit belongs to user
       if (req.userData.id === exhibitData.user.id) {
         const exhibit = exhibitData.get({ plain: true });
-        res.render('exhibitInfo', { exhibit, layout: 'auth.handlebars' });
+        res.render('exhibitInfo', { exhibit, layout: 'fileUpload.handlebars' });
       }
     } else {
       res.render('error');
