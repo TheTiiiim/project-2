@@ -8,14 +8,14 @@
       <ul class="navbar-nav me-auto">
         <li><a class="nav-link" href="/">Home</a></li>
         <li><a class="nav-link" href="/gallery">Gallery</a></li>
-        {{#if loggedIn }}
+        {{#if userSignIn }}
         <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
         <li><a class="nav-link" href="/submit">Upload</a></li>
         {{/if}}
       </ul>
 
       <ul class="navbar-nav">
-        {{#if loggedIn}}
+        {{#if userSignIn}}
         <li><a class="nav-link" href="/logout">Logout</a></li>
         {{else}}
         <li><a class="nav-link" href="/register">Register</a></li>

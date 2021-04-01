@@ -18,18 +18,17 @@ router.get('/:id', async (req, res) => {
 router.post('/', requireCookie, async (req, res) => {
   try {
     // Create a new exhibit
-    const newExhibit = await Exhibit.create({
+    await Exhibit.create({
       'title': req.body.title,
       'medium': req.body.medium,
       'size': req.body.size,
       'price': req.body.price,
-      'user_id': req.cookieUserData.id
+      'user_id': req.userData.id
     });
-    console.log(req.cookieUserData);
-    res.status(200).json(newExhibit);
+    res.status(200).json({success: true});
   } catch (err) {
     console.log(err);
-    res.status(400).json(err);
+    res.status(400).json({success: false, message: err.message});
   }
 });
 
