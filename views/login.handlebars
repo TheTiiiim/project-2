@@ -1,21 +1,24 @@
-<div class="container">
-  <h1>Login</h1>
-  </br>
-
-  <form id="loginForm">
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="email">Email</label><br>
-      <input type="email" id="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="email"><br>
+  <div class="container">
+    <div id="form_wrapper">
+      <div id="form_left">
+        <!-- <img src="public/img/studyMac.jpg" alt="Study of a Mac - Brian Jenkins." /> -->
+      </div>
+        <form id="loginForm">
+          <h1>Art Stack Member Login</h1>
+            <br></br>
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="email">Email</label><br>
+            <input type="email" id="email" placeholder="Email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="email"><br>
+          </div>
+  
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="password">Password</label><br>
+            <input type="password" id="password" placeholder="Password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="password">
+          </div>
+  
+          <div class="col-12">
+            <button type="submit" class="btn btn-dark">Login</button>
+          </div>
+        </form>
     </div>
-
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="password">Password</label><br>
-      <input type="password" id="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="password">
-    </div>
-
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Login</button>
-    </div>
-
-  </form>
-</div>
+  </div>
