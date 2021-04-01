@@ -1,10 +1,9 @@
 <div class="container">
-    {{!-- For each exhibit within the specific gallery, make a card --}}
+
+    p>By {{user.name}}</p>{{!-- Artist's name --}}
+
     {{#each exhibits as |exhibit|}}
-    <div class="container">
-        <p>By {{user.name}}</p>{{!-- Artist's name --}}
-            </header>
-        </div>
+    
     <div class="card">
         <header class="card-header">
             {{artwork}}
