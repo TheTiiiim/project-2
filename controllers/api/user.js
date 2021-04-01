@@ -20,7 +20,8 @@ router.put('/:id', requireCookie, async (req, res) => {
       'name': req.body.name,
       'email': req.body.email,
       'bio': req.body.bio,
-      'website': req.body.website
+      'website': req.body.website,
+      'image_url': req.body.imageUrl
     }, {
       where: {
         id: req.params.id,

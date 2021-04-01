@@ -39,7 +39,8 @@ router.put('/:id', requireCookie, async (req, res) => {
       'title': req.body.title,
       'medium': req.body.medium,
       'size': req.body.size,
-      'price': req.body.price
+      'price': req.body.price,
+      'image_url': req.body.imageUrl,
     }, {
       where: {
         id: req.params.id,

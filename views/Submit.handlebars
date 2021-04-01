@@ -21,7 +21,16 @@
     <label class="floatingInput" for="price">Price</label>
   </div>
 
+  <div class="form-floating mb-3">
+    <input type="text" readonly required id="imageUrl" class="form-control" name="imageUrl" >
+    <label class="floatingInput" for="imageUrl">Image File</label><br>
+  </div>
+
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Upload</button>
+    <button id="uploadButton" type="button" class="btn btn-primary">Upload File</button>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 </form>

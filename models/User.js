@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class User extends Model { }
 
 User.init(
   {
@@ -36,8 +36,12 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     tokenVersion: {
-      type: DataTypes.INTEGER ,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
     },

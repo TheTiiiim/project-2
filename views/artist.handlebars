@@ -13,8 +13,7 @@
         <a href="{{user.website}}" target="_blank" rel="noreferrer noopener" class='row'>{{user.website}}</a>
         <a href="mailto:{{user.email}}" class='row'>{{user.email}}</a>
     </div>
-    {{!-- <img class='col-3' src="{{user.image}}" alt="Artist's profile picture"> --}}
-    <img class='col-3' src="https://via.placeholder.com/350x150" alt="Artist's profile picture">
+    <img class='col-3' src="{{user.image_url}}" alt="Artist's profile picture">
 </div>
 
 {{!-- Upload new exhibit button if user is the artist --}}
@@ -30,10 +29,18 @@
     {{!-- If user is the artist, display card with edit button --}}
     {{#each user.exhibits as |exhibit|}}
     <div class="card text-center" style="width: 18rem;">
-        {{> exhibitCard}}
+        {{!-- Card Image --}}
+        <img src="{{image_url}}" class="card-img-top" alt="...">
+        {{!-- Card Body --}}
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p>{{size}} · {{medium}}</p>
+            <p>${{price}}</p>
+        </div>
         <div class="row">
             <a href="/editExhibit/{{exhibit.id}}" class="btn btn-primary">Edit</a>
-            <button type="button" class="btn btn-danger deleteButton" data-id="{{exhibit.id}}" data-bs-toggle="modal" data-bs-target="#deleteConfirm">Delete</button>
+            <button type="button" class="btn btn-danger deleteButton" data-id="{{exhibit.id}}" data-bs-toggle="modal"
+                data-bs-target="#deleteConfirm">Delete</button>
         </div>
     </div>
     {{/each}}
@@ -42,7 +49,14 @@
     {{!-- Else, no button --}}
     {{#each user.exhibits as |exhibit|}}
     <div class="card text-center" style="width: 18rem;">
-        {{> exhibitCard}}
+        {{!-- Card Image --}}
+        <img src="{{image_url}}" class="card-img-top" alt="...">
+        {{!-- Card Body --}}
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p>{{size}} · {{medium}}</p>
+            <p>${{price}}</p>
+        </div>
     </div>
     {{/each}}
     {{/if}}

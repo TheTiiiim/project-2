@@ -26,6 +26,7 @@ router.get('/gallery', async (req, res) => {
     // Render the page via Handlebars
     res.render('gallery', { exhibits });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
