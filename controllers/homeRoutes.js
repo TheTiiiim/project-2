@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('sequelize');
 
-const { User, Exhibit, UserInfo } = require('../models');
+const { User, Exhibit } = require('../models');
 const { requireCookie } = require('../middlewares/auth');
 
 // Landing Page (Where users choose to login/signup as artist or go to the homepage as a visitor)
@@ -45,7 +45,7 @@ router.get('/user/:id', async (req, res) => {
       }
     }
 
-    const userData = await User.findByPk(req.params.id);
+    const userData = await User.findByPk(req.params.id, { include: Exhibit });
     if (!userData) {
       throw Error('no user');
     }
@@ -59,7 +59,7 @@ router.get('/user/:id', async (req, res) => {
 
 // Upload Page (Where users submit their short stack) Requires user to be logged in
 router.get('/submit', requireCookie, async (req, res) => {
-  res.render('submit');
+  res.render('submit', {layout: 'auth.handlebars'});
 });
 
 module.exports = router;
