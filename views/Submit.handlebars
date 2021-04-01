@@ -1,47 +1,38 @@
-    <div class="row justify-content-center">
-        {{#each posts}}
-        <div class="col-lg-7" style="margin-top: 50px;">
-            <div class="card">
+<div class="container">
+  <h1>Upload</h1>
 
-                <img src="{{this.image}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Posted by {{this.artist}}</h5>
-
-                    {{#if this.title}}
-                    <ul class="list-group">
-                        {{#each this.title}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
-
-                    {{#if this.medium}}
-                    <ul class="list-group">
-                        {{#each this.medium}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
-
-                    {{#if this.size}}
-                    <ul class="list-group">
-                        {{#each this.size}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
-
-                    {{#if this.price}}
-                    <ul class="list-group">
-                        {{#each this.price}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    {{/if}}
-
-                </div>
-            </div>
-        </div>
-        {{/each}}
+  <form id="uploadForm">
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="title">Title</label><br>
+      <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="title" required>
     </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="medium">Medium</label><br>
+      <input type="text" id="medium" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="medium" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="size">Size</label><br>
+      <input type="text" id="size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="size" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="price">Price</label><br>
+      <input type="number" id="price" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="price" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="imageUrl">File Url</label><br>
+      <input type="text" id="imageUrl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="imageUrl" readonly required>
+    </div>
+
+    <div class="col-12">
+      <button id="uploadButton" type="button" class="btn btn-primary">Upload File</button>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
 </div>

@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const { compare } = require('bcryptjs');
-const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 const { User } = require('../../models');
-const { createAccessToken, createRefreshToken, sendRefreshToken, revokeRefreshTokensForUser } = require('../../utils/auth');
-const { requireAuth } = require('../../middlewares/auth');
+const { createRefreshToken, sendRefreshToken, revokeRefreshTokensForUser } = require('../../utils/auth');
+const { requireCookie } = require('../../middlewares/auth');
 
 // "/" endpoint
 
@@ -27,7 +26,7 @@ router.post('/register', async (req, res) => {
 
     if (Array.isArray(err.errors)) {
       const error = err.errors[0];
-      if (error.includes('unique')) {
+      if (error.type.includes('unique')) {
         let columnWithDuplicate = error.path.split('.')[error.path.length - 1];
         message = `That ${columnWithDuplicate} is already used.`;
       }
@@ -58,8 +57,8 @@ router.post('/login', async (req, res) => {
     // set refresh token
     sendRefreshToken(res, await createRefreshToken(user));
 
-    // set accesss token
-    res.status(200).json({ success: true, accessToken: createAccessToken(user) });
+    // send response
+    res.status(200).json({ success: true});
   } catch (err) {
     let message = 'Username or password is incorrect.';
 
@@ -67,55 +66,15 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', requireAuth, async (req, res) => {
+router.post('/logout', requireCookie, async (req, res) => {
   try {
     res.clearCookie('jid');
 
-    revokeRefreshTokensForUser(req.authUserData);
+    revokeRefreshTokensForUser(req.userData);
     res.sendStatus(200);
   } catch (err) {
     res.sendStatus(403);
   }
-});
-
-router.post('/refresh_token', async (req, res) => {
-  // get token
-  const token = req.cookies.jid;
-
-  // fail without token
-  if (!token) {
-    return res.status(403).send({ ok: false, accessToken: '' });
-  }
-
-  let payload = null;
-  try {
-    // get payload
-    payload = verify(token, process.env.REFRESH_TOKEN_SECRET);
-  } catch (err) {
-    // fail without payload
-    return res.status(403).send({ ok: false, accessToken: '' });
-  }
-
-  // get user
-  const user = await User.findByPk(payload.userId);
-
-  // fail without user
-  if (!user) {
-    return res.status(403).send({ ok: false, accessToken: '' });
-  }
-
-  // fail if tokenVersions dont match
-  if (user.tokenVersion !== payload.tokenVersion) {
-    return res.status(403).send({ ok: false, accessToken: '' });
-  }
-
-  // session is valid
-
-  // set refresh token
-  sendRefreshToken(res, await createRefreshToken(user));
-
-  // set accesss token
-  return res.send({ ok: true, accessToken: createAccessToken(user) });
 });
 
 module.exports = router;

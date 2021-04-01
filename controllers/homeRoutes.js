@@ -1,23 +1,16 @@
 const router = require('express').Router();
 const sequelize = require('sequelize');
 
-const { User, Exhibit, UserInfo } = require('../models');
+const { User, Exhibit } = require('../models');
 const { requireCookie } = require('../middlewares/auth');
 
 // Landing Page (Where users choose to login/signup as artist or go to the homepage as a visitor)
 router.get('/', (req, res) => {
-  // Check if user is logged in
-  let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
-
-  res.render('home', { loggedIn });
+  res.render('home');
 });
 
 // Home Page (Where all of the users and their newest shortstack is displayed)
 router.get('/gallery', async (req, res) => {
-  // Check if user is logged in
-  let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
   try {
     // Get all exhibits with their artist's name.
     const exhibitData = await Exhibit.findAll({
@@ -31,39 +24,34 @@ router.get('/gallery', async (req, res) => {
     // Convert exhibitData into a more readable format
     const exhibits = exhibitData.map((exhibit) => exhibit.get({ plain: true }));
     // Render the page via Handlebars
-    res.render('gallery', { exhibits, loggedIn });
+    res.render('gallery', { exhibits });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 router.get('/dashboard', requireCookie, (req, res) => {
-  res.redirect(`/user/${req.cookieUserData.id}`);
+  res.redirect(`/user/${req.userData.id}`);
 });
 
 router.get('/user/:id', async (req, res) => {
-  // Check if user is logged in
-  let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
   try {
     let privatePage = false;
-    if (req.cookieUserData) {
-      if (req.cookieUserData.id === parseInt(req.params.id)) {
+
+    if (req.userData) {
+      if (req.userData.id === parseInt(req.params.id)) {
         // true if signed in as user being viewed
         privatePage = true;
       }
     }
 
-    const userData = await User.findByPk(req.params.id, {
-      attributes: ['name', 'email', 'date_created'],
-      include: [{ model: UserInfo }]
-    });
+    const userData = await User.findByPk(req.params.id, { include: Exhibit });
     if (!userData) {
       throw Error('no user');
     }
     const user = userData.get({ plain: true });
 
-    res.render('artist', { user, privatePage, loggedIn });
+    res.render('artist', { user, privatePage });
   } catch {
     res.send('user does not exist');
   }
@@ -71,10 +59,7 @@ router.get('/user/:id', async (req, res) => {
 
 // Upload Page (Where users submit their short stack) Requires user to be logged in
 router.get('/submit', requireCookie, async (req, res) => {
-  // Check if user is logged in
-  let loggedIn;
-  req.cookieUserData ? loggedIn = true : loggedIn = false;
-  res.render('submit', { loggedIn });
+  res.render('submit', {layout: 'fileUpload.handlebars'});
 });
 
 module.exports = router;

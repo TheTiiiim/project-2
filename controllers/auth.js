@@ -6,11 +6,11 @@ const { requireCookie } = require('../middlewares/auth');
 // "/" endpoint
 
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', {layout: 'auth.handlebars'});
 });
 
 router.get('/register', (req, res) => {
-  res.render('register');
+  res.render('register', {layout: 'auth.handlebars'});
 });
 
 router.get('/logout', requireCookie, async (req, res) => {
@@ -18,7 +18,7 @@ router.get('/logout', requireCookie, async (req, res) => {
   res.clearCookie('jid');
 
   // invalidate all previous cookie tokens
-  revokeRefreshTokensForUser(req.cookieUserData);
+  revokeRefreshTokensForUser(req.userData);
 
   // dont pass cookie user to handlebars
   delete res.locals.userSignIn;
