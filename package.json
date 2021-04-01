@@ -1,7 +1,7 @@
 {
-  "name": "project-2",
+  "name": "art-stack",
   "version": "1.0.0",
-  "description": "a space for UNH bootcamp's second project",
+  "description": "Art Stack provides an online gallery of artwork by community artists. It offers the opportunity for local artists to show their work despite pandemic-related closures, and offers the public the chance to see the extraordinary works of art being produced in our community with their safety and convenience in mind. ",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheTiiiim/project-2.git"
+    "url": "git+https://github.com/TheTiiiim/art-stack.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TheTiiiim/project-2/issues"
+    "url": "https://github.com/TheTiiiim/art-stack/issues"
   },
-  "homepage": "https://github.com/TheTiiiim/project-2#readme",
+  "homepage": "https://github.com/TheTiiiim/art-stack#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
