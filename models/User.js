@@ -28,10 +28,13 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    website: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     tokenVersion: {
       type: DataTypes.INTEGER ,
@@ -51,10 +54,11 @@ User.init(
       },
     },
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
+    paranoid: true
   }
 );
 
