@@ -1,19 +1,36 @@
 <header>
-  <img id="logo" src="images/ArtSTackicon.png">
-  <h1 id="project2">Art Stack</h1>
-  <nav>
+  <nav>  
+    <img id="logo" src="images/ArtSTackicon.png">
+  <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/gallery">Exhibition Gallery</a>
+  </li>
+        {{#if loggedIn }}
+        <li><a href="/logout">Logout</a></li>
+      {{else}}
+      <li><a href="/login">Login</a></li>
+      {{/if}}
+  </ul>
+
+</nav>
+
+
+
+{{!-- <li class="nav-item">
+    <a class="nav-link" href="/dashboard">Artist Submit</a>
+  </li> --}}
+  {{!-- <h1 id="project2">Art Stack</h1> --}}
+{{!-- 
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/gallery">Gallery</a></li>
-      {{#if loggedIn }}
       <li><a href="/dashboard">Dashboard</a></li>
       {{/if}}
 
       {{#if loggedIn }}
-      <li><a href="/logout">Logout</a></li>
-      {{else}}
-      <li><a href="/login">Login</a></li>
-      {{/if}}
+      
 
-    </ul>
-  </nav>
+    </ul> --}}
