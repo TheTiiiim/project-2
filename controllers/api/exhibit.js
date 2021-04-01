@@ -25,6 +25,7 @@ router.post('/', requireCookie, async (req, res) => {
       'price': req.body.price,
       'user_id': req.cookieUserData.id
     });
+    console.log(req.cookieUserData);
     res.status(200).json(newExhibit);
   } catch (err) {
     console.log(err);
