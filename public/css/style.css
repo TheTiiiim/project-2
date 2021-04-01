@@ -1,7 +1,0 @@
-/* Position footer at the bottom center of the screen */
-footer.footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    text-align: center;
-}
