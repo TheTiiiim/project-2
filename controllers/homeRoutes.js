@@ -26,7 +26,6 @@ router.get('/gallery', async (req, res) => {
     // Render the page via Handlebars
     res.render('gallery', { exhibits });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -78,8 +77,12 @@ router.get('/editUser/:id', async (req, res) => {
 });
 
 // Upload Page (Where users submit their short stack) Requires user to be logged in
-router.get('/submit', requireCookie, async (req, res) => {
-  res.render('submit', {layout: 'fileUpload.handlebars'});
+router.get('/submit', requireCookie, (req, res) => {
+  try {
+    res.render('submit', {layout: 'fileUpload.handlebars'});
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/editExhibit/:id', async (req, res) => {
