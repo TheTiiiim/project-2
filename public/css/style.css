@@ -1,6 +1,9 @@
 body {
     background: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
     font-family: 'Arsenal', sans-serif;
+    height: 100%;
+    padding:0;
+    margin:0;
     color:rgb(221, 229, 230);
 }
 
@@ -81,6 +84,6 @@ footer.footer {
     background-color: rgba(58, 53, 53, 0.493);
     color: rgba(110, 110, 110, 0.658);
     width: 100%;
-    position: absolute;
-    bottom: 0px;
+    margin-top: auto;
+    bottom: 0;
 }
