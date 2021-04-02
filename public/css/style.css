@@ -25,7 +25,7 @@ img.main-image {
 }
 
 .btn:hover {
-    background-color: navy;
+    background-color: rgb(61, 72, 73);
     /* Green */
     color: white;
 }
