@@ -41,7 +41,7 @@ User.init(
       allowNull: true,
     },
     tokenVersion: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER ,
       allowNull: false,
       defaultValue: 0,
     },
