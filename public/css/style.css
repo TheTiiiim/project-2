@@ -41,6 +41,11 @@ img.main-image {
     color: white;
 }
 
+.imageBtn {
+    background-color: rgb(39, 44, 44);
+    padding: 0px 50px;
+}
+
 h1 {
     font-size: 30px;
     font-weight: bold;
