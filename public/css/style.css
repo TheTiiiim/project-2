@@ -41,6 +41,11 @@ img.main-image {
     color: white;
 }
 
+.deleteButton:hover {
+    background-color: rgb(90, 11, 11);
+    color: white;
+}
+
 .imageBtn {
     background-color: rgb(39, 44, 44);
     padding: 0px 50px;
@@ -56,6 +61,7 @@ h1.page-heading {
     color: rgb(61, 72, 73);
     font-weight: bold;
 }
+
 h2 {
     font-size: 20px;
     font-weight: bold;
@@ -71,11 +77,22 @@ img {
     align-self: center;
 }
 
+.imageClicked {
+    cursor: pointer;
+}
+
 /* Exhibit cards */
 .card {
     color:rgba(27, 27, 27);
     padding: 5px;
     margin: 3px;
+    width: 18rem;
+}
+
+.card-img-top {
+    height: 240px;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 /* Edit button in Artist's page */
@@ -91,4 +108,20 @@ footer.footer {
     width: 100%;
     margin-top: auto;
     bottom: 0;
+}
+
+/* Modal */
+.modal-content {
+    color: rgba(27, 27, 27);
+}
+
+@media (min-width: 576px){
+    .modal-dialog {
+        display: inline-block;
+        max-width: 100%;
+    }
+}
+
+#imageModal {
+    max-width: 100%;
 }
