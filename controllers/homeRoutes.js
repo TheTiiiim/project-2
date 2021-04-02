@@ -79,7 +79,7 @@ router.get('/editUser/:id', async (req, res) => {
 // Upload Page (Where users submit their short stack) Requires user to be logged in
 router.get('/submit', requireCookie, (req, res) => {
   try {
-    res.render('submit', {layout: 'fileUpload.handlebars'});
+    res.render('Submit', {layout: 'fileUpload.handlebars'});
   } catch (err) {
     res.status(500).json(err);
   }
