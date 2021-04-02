@@ -1,6 +1,10 @@
 body {
     background: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
     font-family: 'Arsenal', sans-serif;
+    height: 100%;
+    padding:0;
+    margin:0;
+    color:rgb(221, 229, 230);
 }
 
 nav.navbar {
@@ -37,10 +41,46 @@ img.main-image {
     color: white;
 }
 
+.imageBtn {
+    background-color: rgb(39, 44, 44);
+    padding: 0px 50px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 h1.page-heading {
     font-size: 2vw;
     color: rgb(61, 72, 73);
     font-weight: bold;
+}
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Text input labels */
+label {
+    color:rgb(61, 72, 73);
+}
+
+img {
+    /* Prevent Image stretching */
+    align-self: center;
+}
+
+/* Exhibit cards */
+.card {
+    color:rgba(27, 27, 27);
+    padding: 5px;
+    margin: 3px;
+}
+
+/* Edit button in Artist's page */
+.editButton {
+    margin-bottom: 1vw;
 }
 
 footer.footer {
@@ -49,6 +89,6 @@ footer.footer {
     background-color: rgba(58, 53, 53, 0.493);
     color: rgba(110, 110, 110, 0.658);
     width: 100%;
-    position: absolute;
-    bottom: 0px;
+    margin-top: auto;
+    bottom: 0;
 }
