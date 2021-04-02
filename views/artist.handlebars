@@ -1,7 +1,7 @@
 {{!-- Edit Profile button if user is the artist --}}
 {{#if privatePage }}
-<div class="d-flex flex-row-reverse">
-    <a href="/editUser/{{user.id}}"><button class="btn btn-primary">Edit Profile</button></a>
+<div class="d-flex flex-row-reverse editButton">
+    <a href="/editUser/{{user.id}}"><button class="btn btn-outline-secondary">Edit Profile</button></a>
 </div>
 {{/if}}
 
@@ -9,18 +9,23 @@
 <div class="row">
     <div class="col-9">
         <h1 class='row'>{{user.name}}</h1>
+        <hr>
         <span class='row'>{{user.bio}}</span>
+        <br>
         <a href="{{user.website}}" target="_blank" rel="noreferrer noopener" class='row'>{{user.website}}</a>
+        <br>
         <a href="mailto:{{user.email}}" class='row'>{{user.email}}</a>
     </div>
-    <img class='col-3' src="{{user.image_url}}" alt="Artist's profile picture">
+    <img class='col-3' src="{{user.image_url}}" alt="Artist's profile picture"> 
 </div>
+<br>
 
 {{!-- Upload new exhibit button if user is the artist --}}
 {{#if privatePage }}
 <div class="text-center">
-    <a href="/submit"><button class="btn btn-primary">Create new Exhibit</button></a>
+    <a href="/submit"><button class="btn btn-outline-secondary">Create new Exhibit</button></a>
 </div>
+<br>
 {{/if}}
 
 {{!-- All Artist's exhibits --}}
@@ -33,12 +38,12 @@
         <img src="{{image_url}}" class="card-img-top" alt="...">
         {{!-- Card Body --}}
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
+            <h2 class="card-title">{{title}}</h2>
             <p>{{size}} · {{medium}}</p>
             <p>${{price}}</p>
         </div>
         <div class="row">
-            <a href="/editExhibit/{{exhibit.id}}" class="btn btn-primary">Edit</a>
+            <a href="/editExhibit/{{exhibit.id}}" class="btn btn-outline-secondary">Edit</a>
             <button type="button" class="btn btn-danger deleteButton" data-id="{{exhibit.id}}" data-bs-toggle="modal"
                 data-bs-target="#deleteConfirm">Delete</button>
         </div>
@@ -53,7 +58,7 @@
         <img src="{{image_url}}" class="card-img-top" alt="...">
         {{!-- Card Body --}}
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
+            <h2 class="card-title">{{title}}</h2>
             <p>{{size}} · {{medium}}</p>
             <p>${{price}}</p>
         </div>

@@ -1,18 +1,17 @@
 {{!-- For each exhibit within the specific gallery, make a card --}}
-<div class="container row">
+<div class="container row justify-content-evenly">
     {{#each exhibits as |exhibit|}}
     <div class="card text-center" style="width: 18rem;">
         {{!-- Card Image --}}
         <img src="{{image_url}}" class="card-img-top" alt="...">
         {{!-- Card Body --}}
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <p>By {{user.name}}</p>
+            <h2 class="card-title">{{title}}</h2>
             <p>{{size}} · {{medium}}</p>
             <p>${{price}}</p>
         </div>
         {{!-- Card Button --}}
-        <a href="/user/{{user.id}}" class="btn btn-primary">Visit Artist's Page</a>
+        <a href="/user/{{user.id}}" class="btn btn-outline-secondary">{{user.name}}</a>
     </div>
     {{/each}}
 </div>
