@@ -4,6 +4,12 @@ body {
     color:rgb(221, 229, 230);
 }
 
+nav.navbar {
+    display: flex;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
 img.icon {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -23,11 +29,12 @@ img.main-image {
 
 .btn {
     transition-duration: 0.4s;
+    padding: 20px 35px;
+    border: none;
 }
 
 .btn:hover {
     background-color: rgb(61, 72, 73);
-    /* Green */
     color: white;
 }
 
@@ -39,6 +46,7 @@ h1 {
 h1.page-heading {
     font-size: 2vw;
     color: rgb(61, 72, 73);
+    font-weight: bold;
 }
 h2 {
     font-size: 20px;
@@ -65,4 +73,14 @@ img {
 /* Edit button in Artist's page */
 .editButton {
     margin-bottom: 1vw;
+}
+
+footer.footer {
+    font-size: 15px;
+    text-align: center;
+    background-color: rgba(58, 53, 53, 0.493);
+    color: rgba(110, 110, 110, 0.658);
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
 }

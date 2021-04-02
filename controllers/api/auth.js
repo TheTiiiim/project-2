@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
     // send response
     res.status(200).json({ success: true});
   } catch (err) {
-    let message = 'Username or password is incorrect.';
+    let message = `Username or password is incorrect.: ${err}`;
 
     res.status(403).json({ success: false, message });
   }
