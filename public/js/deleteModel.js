@@ -15,7 +15,6 @@ async function deletePost(id) {
 // Open the delete confirmation page
 function confirmDelete(id) {
   $('#confirmDelete').on('click', function () {
-    console.log('hello', id);
     deletePost(id);
   });
 }

@@ -27,6 +27,7 @@ $(() => {
         })
         .fail((context) => {
           const data = context.responseJSON;
+          $('#error').removeClass('invisible');
           console.log(data);
         });
     };

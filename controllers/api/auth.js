@@ -58,10 +58,9 @@ router.post('/login', async (req, res) => {
     sendRefreshToken(res, await createRefreshToken(user));
 
     // send response
-    res.status(200).json({ success: true});
+    res.status(200).json({ success: true });
   } catch (err) {
-    let message = `Username or password is incorrect.: ${err}`;
-
+    let message = 'Username or password is incorrect.';
     res.status(403).json({ success: false, message });
   }
 });
