@@ -28,7 +28,6 @@ router.post('/', requireCookie, async (req, res) => {
     });
     res.status(200).json({success: true});
   } catch (err) {
-    console.log(err);
     res.status(400).json({success: false, message: err.message});
   }
 });
@@ -48,7 +47,6 @@ router.put('/:id', requireCookie, async (req, res) => {
     });
     res.status(200).json({success: true});
   } catch (err) {
-    console.log(err);
     res.status(400).json({success: false, message: err.message});
   }
 });

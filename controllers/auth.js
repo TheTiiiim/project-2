@@ -6,7 +6,7 @@ const { requireCookie } = require('../middlewares/auth');
 // "/" endpoint
 
 router.get('/login', (req, res) => {
-  res.render('login', {layout: 'auth.handlebars'});
+  res.render('login', { success: true, layout: 'auth.handlebars'});
 });
 
 router.get('/register', (req, res) => {

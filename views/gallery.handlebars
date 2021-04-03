@@ -1,9 +1,9 @@
 {{!-- For each exhibit within the specific gallery, make a card --}}
 <div class="container row justify-content-evenly">
     {{#each exhibits as |exhibit|}}
-    <div class="card text-center" style="width: 18rem;">
+    <div class="card text-center">
         {{!-- Card Image --}}
-        <img src="{{image_url}}" class="card-img-top" alt="...">
+        <img src="{{image_url}}" class="card-img-top imageClicked" data-bs-toggle="modal" data-bs-target="#imagePopup" alt="{{image_url}}">
         {{!-- Card Body --}}
         <div class="card-body">
             <h2 class="card-title">{{title}}</h2>
@@ -16,4 +16,4 @@
     {{/each}}
 </div>
 
-{{!-- Notes: Add some padding between cards, give styling to text --}}
+{{> imagePopup }}
