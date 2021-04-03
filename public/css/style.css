@@ -103,8 +103,7 @@ img {
 footer.footer {
     font-size: 15px;
     text-align: center;
-    background-color: rgba(58, 53, 53, 0.493);
-    color: rgba(110, 110, 110, 0.658);
+    background-color: rgba(58, 53, 53, 0.5);
     width: 100%;
     margin-top: auto;
     bottom: 0;
