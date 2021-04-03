@@ -8,13 +8,13 @@
 {{!-- Artist's information --}}
 <div class="row">
     <div class="col-9">
-        <h1 class='row'>{{user.name}}</h1>
+        <h1>{{user.name}}</h1>
         <hr>
-        <span class='row'>{{user.bio}}</span>
-        <br>
-        <a href="{{user.website}}" target="_blank" rel="noreferrer noopener" class='row'>{{user.website}}</a>
-        <br>
-        <a href="mailto:{{user.email}}" class='row'>{{user.email}}</a>
+        <span>{{user.bio}}</span>
+        <br><br>
+        <a href="{{user.website}}" target="_blank" rel="noreferrer noopener">{{user.website}}</a>
+        <br><br>
+        <a href="mailto:{{user.email}}">{{user.email}}</a>
     </div>
     <img src="{{user.image_url}}" class="imageClicked col-3" data-bs-toggle="modal" data-bs-target="#imagePopup" alt="Artist's profile picture">
 </div>
