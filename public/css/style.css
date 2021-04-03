@@ -95,6 +95,10 @@ img {
     object-fit: cover;
 }
 
+.cardButton {
+    color: #212529;
+}
+
 /* Edit button in Artist's page */
 .editButton {
     margin-bottom: 1vw;
@@ -115,7 +119,7 @@ footer.footer {
 }
 
 @media (min-width: 576px){
-    .modal-dialog {
+    .modal-dialog-image {
         display: inline-block;
         max-width: 100%;
     }
