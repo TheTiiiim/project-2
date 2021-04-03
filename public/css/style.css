@@ -58,7 +58,7 @@ h1 {
 }
 
 h1.page-heading {
-    font-size: 2vw;
+    font-size: 2rem;
     color: rgb(61, 72, 73);
     font-weight: bold;
 }
