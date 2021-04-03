@@ -11,6 +11,8 @@ This app allows the user to browse through the art gallery, learn more about the
 Art Stack is an example of an app that uses MYSQL with the Node.js run-time environment and Express.js framework with Sequelize ORM, organized via the MVC model.  
 
 # View Demo  
+![MobileScreencap](./public/images/demo1.png)
+![DesktopScreencap](./public/images/demo2.png)
 
 To view demo click on this link: ([https://art-stack-0.herokuapp.com/](https://art-stack-0.herokuapp.com/))
 
@@ -52,8 +54,8 @@ To view demo click on this link: ([https://art-stack-0.herokuapp.com/](https://a
 - `/config` - Database configuration. 
 
 ## Contributors
-- [TheTiiiim](https://github.com/TheTiiiim)
-- [bjenkins63](https://github.com/bjenkins63)
-- [MRomano84](https://github.com/MRomano84)
-- [Ejhuang2015](https://github.com/Ejhuang2015)
-- [wmgleason](https://github.com/wmgleason)
+- [Tim Scott](https://github.com/TheTiiiim)
+- [Brain Jenkins](https://github.com/bjenkins63)
+- [Matt Romano](https://github.com/MRomano84)
+- [Edward Huang](https://github.com/Ejhuang2015)
+- [Wanda Gleason](https://github.com/wmgleason)
