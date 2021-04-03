@@ -52,8 +52,8 @@ To view demo click on this link: ([https://art-stack-0.herokuapp.com/](https://a
 - `/config` - Database configuration. 
 
 ## Contributors
-- [TheTiiiim](https://github.com/TheTiiiim)
-- [bjenkins63](https://github.com/bjenkins63)
-- [MRomano84](https://github.com/MRomano84)
-- [Ejhuang2015](https://github.com/Ejhuang2015)
-- [wmgleason](https://github.com/wmgleason)
+- [Tim Scott](https://github.com/TheTiiiim)
+- [Brain Jenkins](https://github.com/bjenkins63)
+- [Matt Romano](https://github.com/MRomano84)
+- [Edward Huang](https://github.com/Ejhuang2015)
+- [Wanda Gleason](https://github.com/wmgleason)
